@@ -1,5 +1,5 @@
 # PowerNukkitX website
-Welcome to the revamped PowerNukkitX website! Here, we present an enhanced interface designed to deliver a more immersive and intuitive user experience. Our modern and clean design emphasizes the advanced functionalities of PowerNukkitX, ##ensuring a seamless and pleasant navigation experience.
+Welcome to the revamped PowerNukkitX website! Here, we present an enhanced interface designed to deliver a more immersive and intuitive user experience. Our modern and clean design emphasizes the advanced functionalities of PowerNukkitX, ensuring a seamless and pleasant navigation experience.
 
 ## Features
 
