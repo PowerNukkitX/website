@@ -24,7 +24,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
 	};
 
 	const {
-		Component,
+		Component: SwitchComponent,
 		slots,
 		isSelected,
 		getBaseProps,
@@ -45,7 +45,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
 	return (
 		<div>
 			{isSelected ? (
-				<Component className="px-px transition-opacity hover:opacity-80 cursor-pointer">
+				<SwitchComponent className="px-px transition-opacity hover:opacity-80 cursor-pointer">
 					<VisuallyHidden>
 						<input {...getInputProps()} />
 					</VisuallyHidden>
@@ -69,9 +69,9 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
 						})}>
 						<MoonFilledIcon size={22} />
 					</div>
-				</Component>
+				</SwitchComponent>
 			) : (
-				<Component className="px-px transition-opacity hover:opacity-80 cursor-pointer">
+				<SwitchComponent className="px-px transition-opacity hover:opacity-80 cursor-pointer">
 					<VisuallyHidden>
 						<input {...getInputProps()} />
 					</VisuallyHidden>
@@ -95,7 +95,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
 						})}>
 						<SunFilledIcon size={22} />
 					</div>
-				</Component>
+				</SwitchComponent>
 			)}
 		</div>
 	);
