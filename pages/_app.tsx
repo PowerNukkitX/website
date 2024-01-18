@@ -1,6 +1,7 @@
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { NextUIProvider } from "@nextui-org/react";
+import { Component } from "react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import "@/styles/globals.css";
 
