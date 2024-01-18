@@ -1,4 +1,4 @@
-import React, {FC, useEffect} from 'react';
+import React, { FC, useEffect } from 'react';
 import { VisuallyHidden } from '@react-aria/visually-hidden';
 import { SwitchProps, useSwitch } from '@nextui-org/react';
 import { useTheme } from 'next-themes';
@@ -45,7 +45,10 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
 	return (
 		<div>
 			{isSelected ? (
-				<SwitchComponent className="px-px transition-opacity hover:opacity-80 cursor-pointer">
+				<SwitchComponent
+					className="px-px transition-opacity hover:opacity-80 cursor-pointer"
+					as="div" // Explicitly specify the type
+				>
 					<VisuallyHidden>
 						<input {...getInputProps()} />
 					</VisuallyHidden>
@@ -66,12 +69,16 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
 								],
 								classNames?.wrapper
 							),
-						})}>
+						})}
+					>
 						<MoonFilledIcon size={22} />
 					</div>
 				</SwitchComponent>
 			) : (
-				<SwitchComponent className="px-px transition-opacity hover:opacity-80 cursor-pointer">
+				<SwitchComponent
+					className="px-px transition-opacity hover:opacity-80 cursor-pointer"
+					as="div" // Explicitly specify the type
+				>
 					<VisuallyHidden>
 						<input {...getInputProps()} />
 					</VisuallyHidden>
@@ -92,7 +99,8 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
 								],
 								classNames?.wrapper
 							),
-						})}>
+						})}
+					>
 						<SunFilledIcon size={22} />
 					</div>
 				</SwitchComponent>
