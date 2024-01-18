@@ -2,7 +2,7 @@ import * as React from "react";
 import { IconSvgProps } from "@/types";
 import Image from "next/image";
 import { useTheme } from 'next-themes';
-import { FaDiscord, FaGithub } from "react-icons/fa";
+import {FaDiscord, FaDownload, FaGithub} from "react-icons/fa";
 import { LuMoon, LuSun } from "react-icons/lu";
 
 const IconComponent = ({ Icon, size = 24, width, height }: IconSvgProps & { Icon: any }) => {
@@ -37,6 +37,7 @@ export const Logo = ({ size = 35, width, height, ...props }: IconSvgProps) => (
 );
 
 export const DiscordIcon = (props: IconSvgProps) => <IconComponent {...props} Icon={FaDiscord} />;
+export const DownloadIcon = (props: IconSvgProps) => <IconComponent {...props} Icon={FaDownload} />;
 export const GithubIcon = (props: IconSvgProps) => <IconComponent {...props} Icon={FaGithub} />;
 export const MoonFilledIcon = (props: IconSvgProps) => <IconComponent {...props} Icon={LuMoon} />;
 export const SunFilledIcon = (props: IconSvgProps) => <IconComponent {...props} Icon={LuSun} />;

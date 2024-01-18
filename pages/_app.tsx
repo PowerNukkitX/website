@@ -1,24 +1,18 @@
 import type { AppProps } from "next/app";
-
+import type { NextPage } from "next";
+import { useRouter } from "next/router";
 import { NextUIProvider } from "@nextui-org/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-import { fontSans, fontMono } from "@/config/fonts";
-import {useRouter} from 'next/router';
 import "@/styles/globals.css";
 
-export default function App({ Component, pageProps }: AppProps) {
-  const router = useRouter();
+export default function App({ Component, pageProps }: AppProps & { Component: NextPage }) {
+	const router = useRouter();
 
 	return (
 		<NextUIProvider navigate={router.push}>
-			<NextThemesProvider attribute="class" defaultTheme="dark">
+			<NextThemesProvider>
 				<Component {...pageProps} />
 			</NextThemesProvider>
 		</NextUIProvider>
 	);
 }
-
-export const fonts = {
-	sans: fontSans.style.fontFamily,
-	mono: fontMono.style.fontFamily,
-};

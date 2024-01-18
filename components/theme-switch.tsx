@@ -1,102 +1,24 @@
-import React, {FC, useEffect} from 'react';
-import { VisuallyHidden } from '@react-aria/visually-hidden';
-import { SwitchProps, useSwitch } from '@nextui-org/react';
-import { useTheme } from 'next-themes';
-import clsx from 'clsx';
+import React from 'react';
+import { Button } from '@nextui-org/react';
+import { MoonFilledIcon, SunFilledIcon } from '@/components/icons';
+import {useTheme} from "next-themes";
 
-import { SunFilledIcon, MoonFilledIcon } from '@/components/icons';
-
-interface ThemeSwitchProps {
-	className?: string;
-	classNames?: SwitchProps['classNames'];
-}
-
-export const ThemeSwitch: FC<ThemeSwitchProps> = ({
-													  className,
-													  classNames,
-												  }) => {
-	const [isMounted, setIsMounted] = React.useState(false);
-
+export const ThemeSwitch = () => {
 	const { theme, setTheme } = useTheme();
 
-	const onChange = () => {
-		theme === 'light' ? setTheme('dark') : setTheme('light');
+	const toggleTheme = () => {
+		setTheme(theme === 'light' ? 'dark' : 'light');
 	};
 
-	const {
-		Component,
-		slots,
-		isSelected,
-		getBaseProps,
-		getInputProps,
-		getWrapperProps,
-	} = useSwitch({
-		isSelected: theme === 'light',
-		onChange,
-	});
-
-	useEffect(() => {
-		setIsMounted(true);
-	}, [isMounted]);
-
-	// Prevent Hydration Mismatch
-	if (!isMounted) return <div className="w-6 h-6" />;
-
 	return (
-		<div>
-			{isSelected ? (
-				<Component className="px-px transition-opacity hover:opacity-80 cursor-pointer">
-					<VisuallyHidden>
-						<input {...getInputProps()} />
-					</VisuallyHidden>
-					<div
-						{...getWrapperProps()}
-						className={slots.wrapper({
-							class: clsx(
-								[
-									'w-auto h-auto',
-									'bg-transparent',
-									'rounded-lg',
-									'flex items-center justify-center',
-									'group-data-[selected=true]:bg-transparent',
-									'!text-default-500',
-									'pt-px',
-									'px-0',
-									'mx-0',
-								],
-								classNames?.wrapper
-							),
-						})}>
-						<MoonFilledIcon size={22} />
-					</div>
-				</Component>
-			) : (
-				<Component className="px-px transition-opacity hover:opacity-80 cursor-pointer">
-					<VisuallyHidden>
-						<input {...getInputProps()} />
-					</VisuallyHidden>
-					<div
-						{...getWrapperProps()}
-						className={slots.wrapper({
-							class: clsx(
-								[
-									'w-auto h-auto',
-									'bg-transparent',
-									'rounded-lg',
-									'flex items-center justify-center',
-									'group-data-[selected=true]:bg-transparent',
-									'!text-default-500',
-									'pt-px',
-									'px-0',
-									'mx-0',
-								],
-								classNames?.wrapper
-							),
-						})}>
-						<SunFilledIcon size={22} />
-					</div>
-				</Component>
-			)}
-		</div>
+		<Button
+			size="sm"
+			onClick={toggleTheme}
+			isIconOnly
+			disableRipple
+			className="bg-transparent"
+		>
+			{theme === 'light' ? <MoonFilledIcon size={22} /> : <SunFilledIcon size={22} />}
+		</Button>
 	);
 };
