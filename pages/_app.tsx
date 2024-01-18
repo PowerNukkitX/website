@@ -1,11 +1,11 @@
 import type { AppProps } from "next/app";
-import type { NextPage } from "next";
+import type { NextComponentType } from "next";
 import { useRouter } from "next/router";
 import { NextUIProvider } from "@nextui-org/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import "@/styles/globals.css";
 
-function App({ Component, pageProps }: AppProps & { Component: NextPage }) {
+function App({ Component, pageProps }: AppProps & { Component: NextComponentType }) {
 	const router = useRouter();
 
 	return (
