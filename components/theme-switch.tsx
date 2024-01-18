@@ -24,8 +24,6 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
 	};
 
 	const {
-		Component: SwitchComponent,
-		slots,
 		isSelected,
 		getBaseProps,
 		getInputProps,
@@ -43,68 +41,19 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
 	if (!isMounted) return <div className="w-6 h-6" />;
 
 	return (
-		<div>
-			{isSelected ? (
-				<SwitchComponent
-					className="px-px transition-opacity hover:opacity-80 cursor-pointer"
-					as="div" // Explicitly specify the type
-				>
-					<VisuallyHidden>
-						<input {...getInputProps()} />
-					</VisuallyHidden>
-					<div
-						{...getWrapperProps()}
-						className={slots.wrapper({
-							class: clsx(
-								[
-									'w-auto h-auto',
-									'bg-transparent',
-									'rounded-lg',
-									'flex items-center justify-center',
-									'group-data-[selected=true]:bg-transparent',
-									'!text-default-500',
-									'pt-px',
-									'px-0',
-									'mx-0',
-								],
-								classNames?.wrapper
-							),
-						})}
-					>
-						<MoonFilledIcon size={22} />
-					</div>
-				</SwitchComponent>
-			) : (
-				<SwitchComponent
-					className="px-px transition-opacity hover:opacity-80 cursor-pointer"
-					as="div" // Explicitly specify the type
-				>
-					<VisuallyHidden>
-						<input {...getInputProps()} />
-					</VisuallyHidden>
-					<div
-						{...getWrapperProps()}
-						className={slots.wrapper({
-							class: clsx(
-								[
-									'w-auto h-auto',
-									'bg-transparent',
-									'rounded-lg',
-									'flex items-center justify-center',
-									'group-data-[selected=true]:bg-transparent',
-									'!text-default-500',
-									'pt-px',
-									'px-0',
-									'mx-0',
-								],
-								classNames?.wrapper
-							),
-						})}
-					>
-						<SunFilledIcon size={22} />
-					</div>
-				</SwitchComponent>
-			)}
-		</div>
+		<label className="relative cursor-pointer">
+			<VisuallyHidden>
+				<input {...getInputProps()} />
+			</VisuallyHidden>
+			<div
+				{...getWrapperProps()}
+				className={clsx(
+					'w-auto h-auto bg-transparent rounded-lg flex items-center justify-center group-data-[selected=true]:bg-transparent !text-default-500 pt-px px-0 mx-0',
+					classNames?.wrapper
+				)}
+			>
+				{isSelected ? <MoonFilledIcon size={22} /> : <SunFilledIcon size={22} />}
+			</div>
+		</label>
 	);
 };
