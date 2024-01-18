@@ -15,6 +15,7 @@ export const ThemeSwitch = () => {
 			size="sm"
 			onClick={toggleTheme}
 			isIconOnly
+			disableRipple
 			className="bg-transparent"
 		>
 			{theme === 'light' ? <MoonFilledIcon size={22} /> : <SunFilledIcon size={22} />}
