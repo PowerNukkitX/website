@@ -26,7 +26,6 @@ const IconComponent = ({ Icon, size = 24, width, height }: IconSvgProps & { Icon
 };
 
 export const Logo = ({ size = 35, width, height, ...props }: IconSvgProps) => (
-	// @ts-ignore
 	<Image
 		src="/logoPNX.webp"
 		alt="PowerNukkitX logo"
