@@ -1,25 +1,58 @@
-import { Button, Image, Spacer } from "@nextui-org/react";
-import { DownloadIcon } from "@/components/icons";
-
-const randomInRange = (min: number, max: number) => Math.random() * (max - min) + min;
-
-const handleConfetti = async () => {
-    const confetti = (await import("canvas-confetti")).default;
-    confetti({
-        angle: randomInRange(55, 125),
-        spread: randomInRange(50, 70),
-        particleCount: randomInRange(50, 100),
-        origin: { y: 0.5, x: 0.2 },
-    });
-};
+import {
+    Button,
+    ButtonGroup,
+    Chip,
+    Dropdown,
+    DropdownItem,
+    DropdownMenu,
+    DropdownTrigger,
+    Image,
+    Spacer
+} from "@nextui-org/react";
+import {ChevronDownIcon, DevIcon, DownloadIcon, LatestIcon} from "@/components/icons";
+import React from "react";
 
 export const HeroHome = () => {
-    const handleDownloadClick = async () => {
-        handleConfetti(); // Trigger confetti on button click
-        setTimeout(() => {
-            window.location.href = "https://github.com/PowerNukkitX/PowerNukkitX/releases";
-        }, 2000);
+
+    const [selectedOption, setSelectedOption] = React.useState(new Set(["latest"]));
+
+    const ChipHandler = () => {
+        if(Array.from(selectedOption)[0] == "latest") {
+            return (
+                <Chip
+                    color="success"
+                    size="md"
+                    startContent={<LatestIcon size={15}/>}
+                    className="relative"
+                >
+                    Latest
+                </Chip>
+            )
+        }else{
+            return (
+                <Chip
+                    color="warning"
+                    size="md"
+                    startContent={<DevIcon size={15}/>}
+                    className="relative"
+                >
+                    Other version
+                </Chip>
+            )
+        }
+    }
+
+    const descriptionsMap = {
+        latest:
+            "The latest versions of PowerNukkitX are built from the latest commits on the master branch.",
+        other:
+            "Provide a list of the 5 latest versions, excluding the latest one (which is already included in the latest version).",
     };
+
+    const labelsMap = {
+        latest: "Latest release",
+        other: "Other version",
+    }
 
     return (
         <section className="hero-section px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-25">
@@ -28,7 +61,8 @@ export const HeroHome = () => {
                     <div className="text-center md:text-left">
                         <h1 className="text-4xl lg:text-5xl font-bold mb-4">
                             Create your own server with{" "}
-                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-200 via-green-300 to-blue-500 font-bold">
+                            <span
+                                className="bg-clip-text text-transparent bg-gradient-to-r from-green-200 via-green-300 to-blue-500 font-bold">
                 PowerNukkitX
               </span>
                         </h1>
@@ -43,19 +77,59 @@ export const HeroHome = () => {
               </span>
                             , crafting an unparalleled gaming experience for you and your players.
                         </p>
-                        <Spacer y={8} />
-                        <div className="space-x-2 md:space-x-4">
+                        <Spacer y={7}/>
+                        <div
+                            className="flex flex-col md:flex-row items-center justify-center md:justify-start space-y-4 md:space-y-0 md:space-x-4">
+                            <div className="flex items-center">
+                                {ChipHandler()}
+                                <Spacer x={4}/> {/* Add Spacer for horizontal spacing */}
+                                <ButtonGroup variant="flat">
+                                    <Button
+                                        variant="shadow"
+                                        radius="sm"
+                                        color="primary"
+                                        disableRipple
+                                        startContent={<DownloadIcon size={15}/>}
+                                        className="relative"
+                                    >
+                                        Download
+                                    </Button>
+                                    <Dropdown placement="bottom-end">
+                                        <DropdownTrigger>
+                                                <Button isIconOnly color="primary" variant="solid" radius="sm">
+                                                    <ChevronDownIcon/>
+                                                </Button>
+                                        </DropdownTrigger>
+                                        <DropdownMenu
+                                            disallowEmptySelection
+                                            aria-label="Choose version"
+                                            disabledKeys={["chip"]}
+                                            selectedKeys={selectedOption}
+                                            onSelectionChange={setSelectedOption}
+                                            selectionMode="single"
+                                            className="max-w-[300px]"
+                                        >
+                                            <DropdownItem isReadOnly key={"chip"}>
+                                                {ChipHandler()}
+                                            </DropdownItem>
+                                            <DropdownItem key="latest" description={descriptionsMap["latest"]}>
+                                                {labelsMap["latest"]}
+                                            </DropdownItem>
+                                            <DropdownItem key="other" description={descriptionsMap["other"]}>
+                                                {labelsMap["other"]}
+                                            </DropdownItem>
+                                        </DropdownMenu>
+                                    </Dropdown>
+                                </ButtonGroup>
+                            </div>
+
                             <Button
-                                variant="shadow"
+                                variant="faded"
                                 radius="sm"
-                                color="primary"
+                                color="default"
                                 disableRipple
-                                onPress={handleDownloadClick}
-                                startContent={<DownloadIcon size={10} />}
+                                className="mt-4 md:mt-0" // Adjust margin-top for spacing in small screens
                             >
-                                Download
-                            </Button>
-                            <Button variant="faded" radius="sm" color="default" disableRipple>
                                 Documentation
                             </Button>
                         </div>
@@ -67,7 +141,7 @@ export const HeroHome = () => {
                             height={1200}
                             alt="PowerNukkitX World generator"
                             src="/coverPNX.png"
-                            className="rounded-md shadow-md"
+                            className="rounded-md shadow-md hidden md:block"
                         />
                     </div>
                 </div>
