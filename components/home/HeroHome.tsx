@@ -7,11 +7,11 @@ import {
     DropdownMenu,
     DropdownTrigger,
     Image,
-    Spacer, useDisclosure
+    Spacer, useDisclosure,
+    Modal, ModalBody, ModalContent, ModalFooter, ModalHeader
 } from "@nextui-org/react";
 import {ChevronDownIcon, DevIcon, DownloadIcon, LatestIcon} from "@/components/icons";
 import React, {useEffect, useMemo, useState} from "react";
-import {Modal, ModalBody, ModalContent, ModalFooter, ModalHeader} from "@nextui-org/modal";
 
 
 export const HeroHome = () => {
@@ -49,7 +49,7 @@ export const HeroHome = () => {
             {selectedValue == "latest" ? "Latest" : "Other version"}
         </Chip>
     );
-    
+
     return (
         <section className="hero-section px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-25">
             <div className="container mx-auto">
