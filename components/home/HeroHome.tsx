@@ -13,14 +13,19 @@ import {
 import {ChevronDownIcon, DevIcon, DownloadIcon, LatestIcon} from "@/components/icons";
 import React, {useEffect, useMemo, useState} from "react";
 
+interface Release {
+    id: number;
+    tag_name: string;
+    assets: { browser_download_url: string }[];
+}
 
 export const HeroHome = () => {
 
     const [selectedKeys, setSelectedKeys] = useState(new Set(["latest"]));
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const selectedValue = useMemo(() => Array.from(selectedKeys).join(", ").replaceAll("_", " "), [selectedKeys]);
-    const [latestRelease, setLatestRelease] = useState(null);
-    const [releases, setReleases] = useState([]);
+    const [latestRelease, setLatestRelease] = useState<Release | null>(null);
+    const [releases, setReleases] = useState<Release[]>([]);
 
     useEffect(() => {
         if (selectedValue === "latest") {
@@ -89,7 +94,9 @@ export const HeroHome = () => {
                                             if (selectedValue !== "latest") {
                                                 onOpen();
                                             }else {
-                                                window.location.href = latestRelease.assets[3].browser_download_url;
+                                                if (latestRelease && latestRelease.assets[3]) {
+                                                    window.location.href = latestRelease.assets[3].browser_download_url;
+                                                }
                                             }
                                         }}
                                         startContent={<DownloadIcon size={15} color={"#ffffff"}/>}
