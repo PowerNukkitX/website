@@ -28,7 +28,7 @@ export const HeroHome = () => {
                 <Chip
                     color="success"
                     size="md"
-                    startContent={<LatestIcon size={15}/>}
+                    startContent={<LatestIcon size={15} color={"#a3e635"}/>}
                     className="relative"
                 >
                     Latest
@@ -39,7 +39,7 @@ export const HeroHome = () => {
                 <Chip
                     color="warning"
                     size="md"
-                    startContent={<DevIcon size={15}/>}
+                    startContent={<DevIcon size={15} color={"#fcd34d"}/>}
                     className="relative"
                 >
                     Other version

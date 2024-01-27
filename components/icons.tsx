@@ -5,14 +5,11 @@ import {useTheme} from 'next-themes';
 import {FaBolt, FaCheck, FaDiscord, FaDownload, FaGithub} from "react-icons/fa";
 import {LuMoon, LuSun} from "react-icons/lu";
 
-const IconComponent = ({ Icon, size = 24, width, height }: IconSvgProps & { Icon: any }) => {
+const IconComponent = ({ Icon, size = 24, width, height, color}: IconSvgProps & { Icon: any }) => {
 	const { theme } = useTheme();
-	let color;
 
-	if (theme === 'dark' || theme === undefined) {
-		color = 'white';
-	} else {
-		color = 'black';
+	if (!color) {
+		color = theme === 'dark' || theme === undefined ? 'white' : 'black';
 	}
 
 	return (
