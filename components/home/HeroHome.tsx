@@ -7,59 +7,49 @@ import {
     DropdownMenu,
     DropdownTrigger,
     Image,
-    Spacer
+    Spacer, useDisclosure
 } from "@nextui-org/react";
 import {ChevronDownIcon, DevIcon, DownloadIcon, LatestIcon} from "@/components/icons";
-import React from "react";
+import React, {useEffect, useMemo, useState} from "react";
+import {Modal, ModalBody, ModalContent, ModalFooter, ModalHeader} from "@nextui-org/modal";
 
 
 export const HeroHome = () => {
 
-    const [selectedKeys, setSelectedKeys] = React.useState(new Set(["latest"]));
+    const [selectedKeys, setSelectedKeys] = useState(new Set(["latest"]));
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    const selectedValue = useMemo(() => Array.from(selectedKeys).join(", ").replaceAll("_", " "), [selectedKeys]);
+    const [latestRelease, setLatestRelease] = useState(null);
+    const [releases, setReleases] = useState([]);
 
-    const selectedValue = React.useMemo(
-        () => Array.from(selectedKeys).join(", ").replaceAll("_", " "),
-        [selectedKeys]
-    );
-
-    const ChipHandler = () => {
-        if(selectedValue == "latest") {
-            return (
-                <Chip
-                    color="success"
-                    size="md"
-                    startContent={<LatestIcon size={15} color={"#a3e635"}/>}
-                    className="relative"
-                >
-                    Latest
-                </Chip>
-            )
-        }else{
-            return (
-                <Chip
-                    color="warning"
-                    size="md"
-                    startContent={<DevIcon size={15} color={"#fcd34d"}/>}
-                    className="relative"
-                >
-                    Other version
-                </Chip>
-            )
+    useEffect(() => {
+        if (selectedValue === "latest") {
+            fetch('https://api.github.com/repos/PowerNukkitX/PowerNukkitX/releases/latest')
+                .then(response => response.json())
+                .then(data => setLatestRelease(data));
         }
-    }
+    }, [selectedValue]);
 
-    const descriptionsMap = {
-        latest:
-            "The latest versions of PowerNukkitX are built from the latest commits on the master branch.",
-        other:
-            "Provide a list of the 5 latest versions, excluding the latest one (which is already included in the latest version).",
-    };
+    useEffect(() => {
+        fetch('https://api.github.com/repos/PowerNukkitX/PowerNukkitX/releases')
+            .then(response => response.json())
+            .then(data => setReleases(data.slice(1, 6)));
+    }, []);
 
-    const labelsMap = {
-        latest: "Latest release",
-        other: "Other version",
-    }
+    const descriptionsMap = { latest: "The latest versions of PowerNukkitX are built from the latest commits on the master branch.", other: "Provide a list of the 5 latest versions, excluding the latest one (which is already included in the latest version)." };
+    const labelsMap = { latest: "Latest release", other: "Other version" };
 
+    const ChipHandler = () => (
+        <Chip
+            color={selectedValue == "latest" ? "success" : "warning"}
+            size="md"
+            startContent={selectedValue == "latest" ? <LatestIcon size={15} color={"#a3e635"} /> : <DevIcon size={15} color={"#fcd34d"} />}
+            className="relative"
+        >
+            {selectedValue == "latest" ? "Latest" : "Other version"}
+        </Chip>
+    );
+    
     return (
         <section className="hero-section px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-25">
             <div className="container mx-auto">
@@ -95,11 +85,19 @@ export const HeroHome = () => {
                                         radius="sm"
                                         color="primary"
                                         disableRipple
+                                        onPress={() => {
+                                            if (selectedValue !== "latest") {
+                                                onOpen();
+                                            }else {
+                                                window.location.href = latestRelease.assets[3].browser_download_url;
+                                            }
+                                        }}
                                         startContent={<DownloadIcon size={15} color={"#ffffff"}/>}
                                         className="relative"
                                     >
                                         Download
                                     </Button>
+
                                     <Dropdown placement="bottom-end">
                                         <DropdownTrigger>
                                                 <Button isIconOnly color="primary" variant="solid" radius="sm">
@@ -134,19 +132,57 @@ export const HeroHome = () => {
                                 radius="sm"
                                 color="default"
                                 disableRipple
-                                className="mt-4 md:mt-0" // Adjust margin-top for spacing in small screens
+                                className="mt-4 md:mt-0"
                             >
                                 Documentation
                             </Button>
                         </div>
                     </div>
 
+                    <Modal backdrop={"transparent"} isOpen={isOpen} onOpenChange={onOpenChange}>
+                        <ModalContent>
+                            {(onClose) => (
+                                <>
+                                    <ModalHeader className="flex flex-col gap-1">Downloadable Version</ModalHeader>
+                                    <ModalBody>
+                                        <p>
+                                            Customize your download experience with our Download Options modal.<br/>
+                                            Choose the version that fits your needs best and get started in seconds !
+                                        </p>
+                                        {releases.map(release => (
+                                            <div key={release.id}>
+                                                <p>{release.tag_name}</p>
+                                                <Button
+                                                    variant="shadow"
+                                                    radius="sm"
+                                                    color="primary"
+                                                    disableRipple
+                                                    onPress={() => window.location.href = release.assets[3].browser_download_url}
+                                                    startContent={<DownloadIcon size={15} color={"#ffffff"}/>}
+                                                    className="relative"
+                                                >
+                                                    Download
+                                                </Button>
+                                            </div>
+                                        ))}
+
+                                    </ModalBody>
+                                    <ModalFooter>
+                                        <Button color="danger" variant="solid" onPress={onClose}>
+                                            Close
+                                        </Button>
+                                    </ModalFooter>
+                                </>
+                            )}
+                        </ModalContent>
+                    </Modal>
+
                     <div className="relative overflow-hidden w-full h-full">
                         <Image
                             width={2000}
                             height={1200}
                             alt="PowerNukkitX World generator"
-                            src="/coverPNX.png"
+                            src="cover.jpg"
                             className="rounded-md shadow-md hidden md:block"
                         />
                     </div>
