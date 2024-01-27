@@ -12,12 +12,18 @@ import {
 import {ChevronDownIcon, DevIcon, DownloadIcon, LatestIcon} from "@/components/icons";
 import React from "react";
 
+
 export const HeroHome = () => {
 
-    const [selectedOption, setSelectedOption] = React.useState(new Set(["latest"]));
+    const [selectedKeys, setSelectedKeys] = React.useState(new Set(["latest"]));
+
+    const selectedValue = React.useMemo(
+        () => Array.from(selectedKeys).join(", ").replaceAll("_", " "),
+        [selectedKeys]
+    );
 
     const ChipHandler = () => {
-        if(Array.from(selectedOption)[0] == "latest") {
+        if(selectedValue == "latest") {
             return (
                 <Chip
                     color="success"
@@ -82,7 +88,7 @@ export const HeroHome = () => {
                             className="flex flex-col md:flex-row items-center justify-center md:justify-start space-y-4 md:space-y-0 md:space-x-4">
                             <div className="flex items-center">
                                 {ChipHandler()}
-                                <Spacer x={4}/> {/* Add Spacer for horizontal spacing */}
+                                <Spacer x={4}/>
                                 <ButtonGroup variant="flat">
                                     <Button
                                         variant="shadow"
@@ -104,9 +110,9 @@ export const HeroHome = () => {
                                             disallowEmptySelection
                                             aria-label="Choose version"
                                             disabledKeys={["chip"]}
-                                            selectedKeys={selectedOption}
-                                            onSelectionChange={setSelectedOption}
                                             selectionMode="single"
+                                            selectedKeys={selectedKeys}
+                                            onSelectionChange={(keys) => setSelectedKeys(new Set(keys))}
                                             className="max-w-[300px]"
                                         >
                                             <DropdownItem isReadOnly key={"chip"}>
