@@ -12,11 +12,13 @@ import {
 } from "@nextui-org/react";
 import {ChevronDownIcon, DevIcon, DownloadIcon, LatestIcon} from "@/components/icons";
 import React, {useEffect, useMemo, useState} from "react";
+import ReactMarkdown from 'react-markdown';
 
 interface Release {
     id: number;
     tag_name: string;
     assets: { browser_download_url: string }[];
+    body: string;
 }
 
 export const HeroHome = () => {
@@ -26,6 +28,9 @@ export const HeroHome = () => {
     const selectedValue = useMemo(() => Array.from(selectedKeys).join(", ").replaceAll("_", " "), [selectedKeys]);
     const [latestRelease, setLatestRelease] = useState<Release | null>(null);
     const [releases, setReleases] = useState<Release[]>([]);
+    const { isOpen: isReleaseBodyOpen, onOpen: onOpenReleaseBody, onClose: onCloseReleaseBody } = useDisclosure();
+    const [releaseBody, setReleaseBody] = useState<string | null>(null);
+
 
     useEffect(() => {
         if (selectedValue === "latest") {
@@ -48,7 +53,7 @@ export const HeroHome = () => {
         <Chip
             color={selectedValue == "latest" ? "success" : "warning"}
             size="md"
-            startContent={selectedValue == "latest" ? <LatestIcon size={15} color={"#a3e635"} /> : <DevIcon size={15} color={"#fcd34d"} />}
+            startContent={selectedValue == "latest" ? <LatestIcon size={15} color={"#3f6212"} /> : <DevIcon size={15} color={"#fcd34d"} />}
             className="relative"
         >
             {selectedValue == "latest" ? "Latest" : "Other version"}
@@ -107,7 +112,7 @@ export const HeroHome = () => {
 
                                     <Dropdown placement="bottom-end">
                                         <DropdownTrigger>
-                                                <Button isIconOnly color="primary" variant="solid" radius="sm">
+                                                <Button isIconOnly color="primary" variant="shadow" radius="sm">
                                                     <ChevronDownIcon/>
                                                 </Button>
                                         </DropdownTrigger>
@@ -157,30 +162,58 @@ export const HeroHome = () => {
                                             Choose the version that fits your needs best and get started in seconds !
                                         </p>
                                         {releases.map(release => (
-                                            <div key={release.id}>
+                                            <div key={release.id} className="flex justify-between items-center">
                                                 <p>{release.tag_name}</p>
-                                                <Button
-                                                    variant="shadow"
-                                                    radius="sm"
-                                                    color="primary"
-                                                    disableRipple
-                                                    onPress={() => window.location.href = release.assets[3].browser_download_url}
-                                                    startContent={<DownloadIcon size={15} color={"#ffffff"}/>}
-                                                    className="relative"
-                                                >
-                                                    Download
-                                                </Button>
+                                                <div className="flex items-center">
+                                                    <Button
+                                                        variant="solid"
+                                                        radius="sm"
+                                                        color="primary"
+                                                        disableRipple
+                                                        onPress={() => window.location.href = release.assets[3].browser_download_url}
+                                                        startContent={<DownloadIcon size={15} color={"#ffffff"}/>}
+                                                        className="relative"
+                                                    >
+                                                        Download
+                                                    </Button>
+                                                    <Button
+                                                        variant="solid"
+                                                        radius="sm"
+                                                        color="default"
+                                                        disableRipple
+                                                        onPress={() => {
+                                                            setReleaseBody(release.body);
+                                                            onOpenReleaseBody();
+                                                        }}
+                                                        className="relative ml-2"
+                                                    >
+                                                        View Notes
+                                                    </Button>
+                                                </div>
                                             </div>
                                         ))}
-
                                     </ModalBody>
                                     <ModalFooter>
-                                        <Button color="danger" variant="solid" onPress={onClose}>
+                                        <Button color="default" variant="faded" onPress={onClose}>
                                             Close
                                         </Button>
                                     </ModalFooter>
                                 </>
                             )}
+                        </ModalContent>
+                    </Modal>
+
+                    <Modal backdrop={"transparent"} isOpen={isReleaseBodyOpen} onOpenChange={onCloseReleaseBody}>
+                        <ModalContent className="w-full h-full overflow-auto p-5 rounded-lg shadow-lg max-w-screen-md sm:max-w-screen-lg md:max-w-screen-xl lg:max-w-screen-2xl">
+                            <ModalHeader className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2">Release Body</ModalHeader>
+                            <ModalBody className="mb-4 text-sm sm:text-base md:text-lg lg:text-xl">
+                                <ReactMarkdown>{releaseBody}</ReactMarkdown>
+                            </ModalBody>
+                            <ModalFooter className="flex justify-end">
+                                <Button color="default" variant="faded" onPress={onCloseReleaseBody}>
+                                    Close
+                                </Button>
+                            </ModalFooter>
                         </ModalContent>
                     </Modal>
 
