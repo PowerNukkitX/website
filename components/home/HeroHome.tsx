@@ -112,7 +112,7 @@ export const HeroHome = () => {
                                             disabledKeys={["chip"]}
                                             selectionMode="single"
                                             selectedKeys={selectedKeys}
-                                            onSelectionChange={(keys) => setSelectedKeys(new Set(keys))}
+                                            onSelectionChange={(keys) => setSelectedKeys(keys as Set<string>)}
                                             className="max-w-[300px]"
                                         >
                                             <DropdownItem isReadOnly key={"chip"}>
