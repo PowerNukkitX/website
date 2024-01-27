@@ -95,7 +95,7 @@ export const HeroHome = () => {
                                         radius="sm"
                                         color="primary"
                                         disableRipple
-                                        startContent={<DownloadIcon size={15}/>}
+                                        startContent={<DownloadIcon size={15} color={"#ffffff"}/>}
                                         className="relative"
                                     >
                                         Download
