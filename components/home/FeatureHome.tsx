@@ -35,8 +35,7 @@ const FeatureHome: React.FC = () => {
                             </h1>
                             <p className="dark max-w-[600px] md:text-xl dark:text-zinc-100 light:text-black mx-auto">
                                 Our features are designed to optimize your productivity and simplify your work
-                                processes, because your server deserves the <span
-                                className="text-focus font-bold bg-clip-text text-transparent bg-blue-600">best</span>
+                                processes, because your server deserves the <span className="text-focus font-bold bg-clip-text text-transparent bg-blue-600">best</span>
                             </p>
                         </div>
                     </div>
