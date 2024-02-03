@@ -2,7 +2,8 @@ import * as React from "react";
 import {IconSvgProps} from "@/types";
 import Image from "next/image";
 import {useTheme} from 'next-themes';
-import {FaBolt, FaCheck, FaDiscord, FaDownload, FaGithub} from "react-icons/fa";
+import {FaArchive, FaBolt, FaCheck, FaDiscord, FaDownload, FaGithub, FaJava} from "react-icons/fa";
+import {FiCpu} from "react-icons/fi";
 import {LuMoon, LuSun} from "react-icons/lu";
 
 const IconComponent = ({ Icon, size = 24, width, height, color}: IconSvgProps & { Icon: any }) => {
@@ -46,3 +47,7 @@ export const LatestIcon = (props: IconSvgProps) => <IconComponent {...props} Ico
 export const DevIcon = (props: IconSvgProps) => <IconComponent {...props} Icon={FaBolt} />;
 export const MoonFilledIcon = (props: IconSvgProps) => <IconComponent {...props} Icon={LuMoon} />;
 export const SunFilledIcon = (props: IconSvgProps) => <IconComponent {...props} Icon={LuSun} />;
+
+export const CPUIcon = (props: IconSvgProps) => <IconComponent {...props} Icon={FiCpu} />;
+export const JavaIcon = (props: IconSvgProps) => <IconComponent {...props} Icon={FaJava} />;
+export const VanillaIcon = (props: IconSvgProps) => <IconComponent {...props} Icon={FaArchive} />;
