@@ -2,28 +2,26 @@ import {
 	Button,
 	Link,
 	Navbar as NextUINavbar,
-	NavbarContent,
-	NavbarMenu,
 	NavbarBrand,
+	NavbarContent,
 	NavbarItem,
-	NavbarMenuItem, NavbarMenuToggle,
+	NavbarMenu,
+	NavbarMenuItem,
+	NavbarMenuToggle,
 } from "@nextui-org/react";
 
-import { link as linkStyles } from "@nextui-org/theme";
+import {link as linkStyles} from "@nextui-org/theme";
 
-import { siteConfig } from "@/config/site";
+import {siteConfig} from "@/config/site";
 import NextLink from "next/link";
 import clsx from "clsx";
 
-import { ThemeSwitch } from "@/components/theme-switch";
-import {
-	GithubIcon,
-	DiscordIcon,
-} from "@/components/icons";
-
-import { Logo } from "@/components/icons";
+import {ThemeSwitch} from "@/components/theme-switch";
+import {DiscordIcon, GithubIcon, Logo,} from "@/components/icons";
+import {useTheme} from "next-themes";
 
 export const Navbar = () => {
+	const {resolvedTheme} = useTheme();
 	return (
 		<NextUINavbar maxWidth="xl" position="sticky" className="mb-4">
 			<NavbarContent className="basis-1/5 sm:basis-full" justify="start">
@@ -53,10 +51,10 @@ export const Navbar = () => {
 			<NavbarContent className="hidden sm:flex basis-1/5 sm:basis-full" justify="end">
 				<NavbarItem className="hidden sm:flex gap-2">
 					<Link isExternal href={siteConfig.links.discord}>
-						<DiscordIcon color="text-default-500" />
+						<DiscordIcon className={resolvedTheme === 'light' ? 'text-default-500' : 'text-black'} />
 					</Link>
 					<Link isExternal href={siteConfig.links.github}>
-						<GithubIcon className="text-default-500" />
+						<GithubIcon className={resolvedTheme === 'light' ? 'text-default-500' : 'text-black'} />
 					</Link>
 					<ThemeSwitch />
 				</NavbarItem>
