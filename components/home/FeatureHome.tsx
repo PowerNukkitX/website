@@ -8,7 +8,7 @@ const FeatureHome: React.FC = () => {
             Icon: CPUIcon,
             title: "High performance",
             subtitle: "Multi-core parallel computing + Graal JIT",
-            description: "The parallel processing capability of PNX enables it to make full use of multi-core CPU. You don't need to pursue high CPU frequency, and you can enjoy the huge performance improvement brought by multi-core CPU. At the same time, we use the world's leading graaljit compiler to dynamically convert java code into high-quality machine code most suitable for your CPU, so that Java code has high performance comparable to C++."
+            description: "The parallel processing capability of PNX enables it to make full use of multi-core CPU. You don&apos;t need to pursue high CPU frequency, and you can enjoy the huge performance improvement brought by multi-core CPU. At the same time, we use the world&apos;s leading graaljit compiler to dynamically convert java code into high-quality machine code most suitable for your CPU, so that Java code has high performance comparable to C++."
         },
         {
             Icon: VanillaIcon,
@@ -31,7 +31,7 @@ const FeatureHome: React.FC = () => {
                     <div className="flex flex-col justify-center space-y-8 text-center">
                         <div className="space-y-2">
                             <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-green-200 via-green-300 to-blue-500">
-                                Discover PowerNukkitX's features
+                                Discover PowerNukkitX&apos;s features
                             </h1>
                             <p className="dark max-w-[600px] md:text-xl dark:text-zinc-100 light:text-black mx-auto">
                                 Our features are designed to optimize your productivity and simplify your work
