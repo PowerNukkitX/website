@@ -15,7 +15,7 @@
     "@types/node": "20.11.16",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.18",
-    "autoprefixer": "10.4.15",
+    "autoprefixer": "10.4.17",
     "axios": "^1.6.7",
     "canvas-confetti": "^1.9.2",
     "clsx": "^2.0.0",
