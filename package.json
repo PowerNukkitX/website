@@ -1,9 +1,16 @@
 {
-  "name": "next-pages-template",
+  "name": "pnx-website",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "AzaleeX",
+    "email": "azaleemcpe@gmail.com",
+    "url": "https://github.com/AzaleeX"
+  },
+  "contributors": [],
   "scripts": {
     "dev": "next dev",
+    "performanceDebug": "PERFORMANCE=true NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -35,5 +42,8 @@
     "tailwind-variants": "^0.1.20",
     "tailwindcss": "3.4.1",
     "typescript": "5.3.3"
+  },
+  "devDependencies": {
+    "webpack": "^5.90.1"
   }
 }
