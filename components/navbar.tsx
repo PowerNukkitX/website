@@ -1,13 +1,13 @@
 import {
-	Button,
-	Link,
-	Navbar as NextUINavbar,
-	NavbarBrand,
-	NavbarContent,
-	NavbarItem,
-	NavbarMenu,
-	NavbarMenuItem,
-	NavbarMenuToggle,
+    Button,
+    Link,
+    Navbar as NextUINavbar,
+    NavbarBrand,
+    NavbarContent,
+    NavbarItem,
+    NavbarMenu,
+    NavbarMenuItem,
+    NavbarMenuToggle,
 } from "@nextui-org/react";
 
 import {link as linkStyles} from "@nextui-org/theme";

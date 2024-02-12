@@ -1,7 +1,5 @@
 import React from 'react';
-import FeatureCard from "@/components/home/FeatureCard";
-import { FaBoltLightning, FaBrain, FaUserLock } from "react-icons/fa6";
-import {FaCode, FaCubes, FaGlobe, FaRocket, FaServer, FaShieldAlt, FaToolbox, FaUsersCog} from "react-icons/fa";
+import {FaCode, FaCubes, FaRocket, FaServer, FaToolbox, FaUsersCog} from "react-icons/fa";
 
 const FeatureHome: React.FC = () => {
     const features = [

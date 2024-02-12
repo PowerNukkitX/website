@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import {
     Button,
     ButtonGroup,
@@ -7,16 +7,16 @@ import {
     DropdownItem,
     DropdownMenu,
     DropdownTrigger,
+    Image,
     Modal,
     ModalBody,
     ModalContent,
     ModalFooter,
     ModalHeader,
     Spacer,
-    Image,
     useDisclosure,
 } from "@nextui-org/react";
-import { ChevronDownIcon, DownloadIcon } from "@/components/icons";
+import {ChevronDownIcon, DownloadIcon} from "@/components/icons";
 import ReactMarkdown from 'react-markdown';
 import NextImage from "next/image";
 import confetti from "canvas-confetti";

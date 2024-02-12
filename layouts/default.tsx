@@ -1,5 +1,5 @@
-import { Navbar } from "@/components/navbar";
-import { Head } from "./head";
+import {Navbar} from "@/components/navbar";
+import {Head} from "./head";
 import {Link} from "@nextui-org/react";
 import React from "react";
 
