@@ -9,8 +9,28 @@ module.exports = {
     './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'hero-pattern': "url('/bg-wave.png')",
+      },
+    },
   },
   darkMode: "class",
-  plugins: [nextui()],
+  plugins: [nextui({
+    addCommonColors: true,
+    defaultTheme: 'light',
+    themes: {
+      light: {
+        colors: {
+          primary: "#17c964",
+        }
+      },
+      dark: {
+        colors: {
+          background: "#121212",
+          primary: "#17c964",
+        }
+      },
+    }
+  })],
 }

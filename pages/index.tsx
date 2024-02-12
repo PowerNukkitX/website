@@ -1,6 +1,5 @@
 import DefaultLayout from "@/layouts/default";
-import {HeroHome} from "@/components/home/HeroHome";
-import AboutHome from "@/components/home/AboutHome";
+import HeroHome from "@/components/home/HeroHome";
 import FeatureHome from "@/components/home/FeatureHome";
 
 export default function IndexPage() {
@@ -8,7 +7,6 @@ export default function IndexPage() {
 		<DefaultLayout>
 			<HeroHome />
 			<FeatureHome />
-			<AboutHome />
 		</DefaultLayout>
 	);
 }

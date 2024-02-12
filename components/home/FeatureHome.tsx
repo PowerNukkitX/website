@@ -1,57 +1,75 @@
 import React from 'react';
-import FeatureCard from "@/components/home/FeatureCard";
-import {CPUIcon, JavaIcon, VanillaIcon} from "@/components/icons";
+import {FaCode, FaCubes, FaRocket, FaServer, FaToolbox, FaUsersCog} from "react-icons/fa";
 
 const FeatureHome: React.FC = () => {
     const features = [
         {
-            Icon: CPUIcon,
-            title: "High performance",
-            subtitle: "Multi-core parallel computing + Graal JIT",
-            description: "The parallel processing capability of PNX enables it to make full use of multi-core CPU. You don&apos;t need to pursue high CPU frequency, and you can enjoy the huge performance improvement brought by multi-core CPU. At the same time, we use the world&apos;s leading graaljit compiler to dynamically convert java code into high-quality machine code most suitable for your CPU, so that Java code has high performance comparable to C++."
+            Icon: FaServer,
+            title: "Cross-Platform Compatibility",
+            description: "PowerNukkitX supports cross-platform compatibility, allowing you to host Bedrock servers seamlessly on various operating systems.",
         },
         {
-            Icon: VanillaIcon,
+            Icon: FaRocket,
+            title: "Optimized Performance",
+            description: "Experience superior performance with PowerNukkitX. Optimized for efficiency, it ensures smooth gameplay experiences for all players.",
+        },
+        {
+            Icon: FaToolbox,
+            title: "Extensive Plugin Support",
+            description: "Customize and expand your server functionalities with a wide range of plugins supported by PowerNukkitX, providing endless possibilities.",
+        },
+        {
+            Icon: FaCode,
+            title: "JavaScript Plugin Development",
+            description: "Create custom plugins for your server using JavaScript. PowerNukkitX offers extensive support for JavaScript plugins, enabling you to enhance your server with limitless possibilities.",
+        },
+        {
+            Icon: FaCubes,
             title: "Vanilla features",
-            subtitle: "All blocks, items, recipes, etc.",
-            description: "PNX supports more vanilla features, including but not limited to all blocks, items, recipes, redstone, vanilla commands, water-logged blocks, etc. PNX is committed to providing a better survival mode game experience."
+            description: "Leverage PowerNukkitX's CustomItem, CustomBlock, and CustomEnchantment systems to introduce unique items, blocks, and enchantments to your server, expanding gameplay options for your players.",
         },
         {
-            Icon: JavaIcon,
-            title: "Massive plugins",
-            subtitle: "Thousands of plugins for you to choose",
-            description: "PNX retains good plugin compatibility while adding many vanilla features, and can directly run Java plugins written targeting nukkitx and PowerMockito. In addition, PNX also implements the JSAPI of LiteLoader based on the built-in JS engine, which enables LLSE plugins to run on PNX with only a few changes."
-        }
+            Icon: FaUsersCog,
+            title: "Community-Driven Development",
+            description: "Join a thriving community of developers and users contributing to the continuous improvement and development of PowerNukkitX.",
+        },
     ];
 
     return (
-        <section className="feature-home w-full py-12 md:py-24 lg:py-32 xl:py-48">
-            <div className="container px-4 md:px-6">
-                <div className="grid gap-6 items-center">
-                    <div className="flex flex-col justify-center space-y-8 text-center">
-                        <div className="space-y-2">
-                            <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-green-200 via-green-300 to-blue-500">
-                                Discover PowerNukkitX&apos;s features
-                            </h1>
-                            <p className="dark max-w-[600px] md:text-xl dark:text-zinc-100 light:text-black mx-auto">
-                                Our features are designed to optimize your productivity and simplify your work
-                                processes, because your server deserves the <span className="text-focus font-bold bg-clip-text text-transparent bg-blue-600">best</span>
-                            </p>
-                        </div>
-                    </div>
+        <section id="features">
+            <div className="mx-auto max-w-screen-xl gap-12 px-4 py-28 md:px-8">
+                <div className="mx-auto max-w-4xl space-y-5 text-center">
+                    <h2 className="mx-auto text-4xl md:text-6xl ">
+                        <span
+                            className="bg-gradient-to-t from-success-300 to-success-500 bg-clip-text font-bold text-transparent">
+                            Looking for powerful server solutions ?
+                        </span>{" "}
+                    </h2>
+                    <p className="mx-auto max-w-2xl text-xl">
+                        PowerNukkitX provides{" "}
+                        <span className="font-bold">
+                            robust features
+                        </span>{" "}
+                        for your Bedrock server needs.
+                    </p>
                 </div>
-            </div>
-            <div className="mx-auto mt-20 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-7xl">
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {features.map((feature, index) => (
-                        <FeatureCard
-                            key={index}
-                            Icon={feature.Icon}
-                            featureTitle={feature.title}
-                            featureSubtitle={feature.subtitle}
-                            featureDescription={feature.description}
-                        />
-                    ))}
+                <div className="relative mt-12">
+                    <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                        {features.map((item, idx) => (
+                            <li
+                                key={idx}
+                                className="space-y-3 rounded-lg border border-content2 bg-content1 p-4"
+                            >
+                                <div className="pb-3 text-success">
+                                    <item.Icon size={25}/>
+                                </div>
+                                <h4 className="text-lg font-semibold text-success">
+                                    {item.title}
+                                </h4>
+                                <p>{item.description}</p>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
             </div>
         </section>
