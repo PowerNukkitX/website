@@ -23,7 +23,7 @@ import {useTheme} from "next-themes";
 export const Navbar = () => {
 	const {resolvedTheme} = useTheme();
 	return (
-		<NextUINavbar maxWidth="xl" position="sticky" className="mb-4">
+		<NextUINavbar maxWidth="xl" position="sticky" className="mb-4 top-0" style={{ zIndex: 1000 }}>
 			<NavbarContent className="basis-1/5 sm:basis-full" justify="start">
 				<NavbarBrand className="gap-3 max-w-fit pr-2">
 					<NextLink className="flex justify-start items-center gap-1" href="/">

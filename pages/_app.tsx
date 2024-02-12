@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }: AppProps & { Component: Ne
 	const router = useRouter();
 
 	return (
-		<NextUIProvider navigate={router.push}>
+		<NextUIProvider navigate={router.push} className="flex min-h-full flex-1 flex-col">
 			<NextThemesProvider>
 				<Component {...pageProps} />
 			</NextThemesProvider>
