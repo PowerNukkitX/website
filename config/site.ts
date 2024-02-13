@@ -2,7 +2,7 @@ export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
 	name: "Home",
-	description: "PowerNukkitX constantly strives to make its Bedrock server software the best and fastest it can be.",
+	description: "PowerNukkitX is a server software for Minecraft Bedrock that always aims to be the best, pushing the boundaries of creation.",
 	navItems: [
 	{
 		label: "Home",
