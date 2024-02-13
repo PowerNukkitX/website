@@ -9,7 +9,7 @@ export default function DefaultLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<div className="flex min-h-screen flex-col selection:bg-success-600/70 selection:text-white bg-hero-pattern bg-right-top bg-no-repeat">
+		<div className="flex min-h-screen flex-col selection:bg-success-600/70 selection:text-white">
 			<Head/>
 			<Navbar/>
 			<div className="flex flex-1 flex-col">
