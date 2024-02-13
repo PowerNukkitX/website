@@ -35,16 +35,32 @@ export const Navbar = () => {
 			<NavbarContent className="hidden lg:flex gap-2 justify-start" justify="center">
 				{siteConfig.navItems.map((item) => (
 					<NavbarItem key={item.href}>
-						<Button
-							className={clsx(
-								linkStyles({ color: "foreground" }),
-								"data-[active=true]:text-primary data-[active=true]:font-medium"
-							)}
-							variant="light"
-							href={item.href}
-						>
-							{item.label}
-						</Button>
+						{item.redirect ? (
+							<Button
+								className={clsx(
+									linkStyles({ color: "foreground" }),
+									"data-[active=true]:text-primary data-[active=true]:font-medium"
+								)}
+								variant="light"
+								href={item.href}
+								as={Link}
+								showAnchorIcon
+								target="_blank"
+							>
+								{item.label}
+							</Button>
+						) : (
+							<Button
+								className={clsx(
+									linkStyles({ color: "foreground" }),
+									"data-[active=true]:text-primary data-[active=true]:font-medium"
+								)}
+								variant="light"
+								href={item.href}
+							>
+								{item.label}
+							</Button>
+						)}
 					</NavbarItem>
 				))}
 			</NavbarContent>
@@ -56,7 +72,6 @@ export const Navbar = () => {
 					<Link isExternal href={siteConfig.links.github}>
 						<GithubIcon className={resolvedTheme === 'light' ? 'text-default-500' : 'text-black'} />
 					</Link>
-					<ThemeSwitch />
 				</NavbarItem>
 			</NavbarContent>
 
@@ -78,7 +93,6 @@ export const Navbar = () => {
 						<Link isExternal href={siteConfig.links.github}>
 							<GithubIcon className="text-default-500" />
 						</Link>
-						<ThemeSwitch />
 					</NavbarMenuItem>
 				</div>
 			</NavbarMenu>

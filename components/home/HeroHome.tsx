@@ -30,7 +30,7 @@ interface Release {
 
 const HeroHome = () => {
     const [selectedKeys, setSelectedKeys] = useState(new Set(["latest"]));
-    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
     const selectedValue = useMemo(() => Array.from(selectedKeys).join(", ").replaceAll("_", " "), [selectedKeys]);
     const [latestRelease, setLatestRelease] = useState<Release | null>(null);
     const [releases, setReleases] = useState<Release[]>([]);
@@ -160,6 +160,7 @@ const HeroHome = () => {
                                     color="default"
                                     disableRipple
                                     className="mt-4 md:mt-0"
+                                    onPress={() => window.open('https://dev.pnx-wiki.pages.dev/', '_blank')}
                                 >
                                     Documentation
                                 </Button>
@@ -192,66 +193,62 @@ const HeroHome = () => {
                     </button>
                 </a>
             </div>
-            <Modal backdrop={"transparent"} isOpen={isOpen} onOpenChange={onOpenChange}>
-                <ModalContent>
-                    {(onClose) => (
-                        <>
-                            <ModalHeader className="flex flex-col gap-1">Downloadable Version</ModalHeader>
-                            <ModalBody>
-                                <p>
-                                    Customize your download experience with our Download Options modal.<br/>
-                                    Choose the version that fits your needs best and get started in seconds !
-                                </p>
-                                {releases.map(release => (
-                                    <div key={release.id} className="flex justify-between items-center">
-                                        <p>{release.tag_name}</p>
-                                        <div className="flex items-center">
-                                            <Button
-                                                variant="solid"
-                                                radius="sm"
-                                                color="primary"
-                                                disableRipple
-                                                onPress={() => window.location.href = release.assets[3].browser_download_url}
-                                                startContent={<DownloadIcon size={15} color={"#ffffff"}/>}
-                                                className="relative"
-                                            >
-                                                Download
-                                            </Button>
-                                            <Button
-                                                variant="solid"
-                                                radius="sm"
-                                                color="default"
-                                                disableRipple
-                                                onPress={() => {
-                                                    setReleaseBody(release.body);
-                                                    onOpenReleaseBody();
-                                                }}
-                                                className="relative ml-2"
-                                            >
-                                                View Notes
-                                            </Button>
-                                        </div>
-                                    </div>
-                                ))}
-                            </ModalBody>
-                            <ModalFooter>
-                                <Button color="default" variant="faded" onPress={onClose}>
-                                    Close
-                                </Button>
-                            </ModalFooter>
-                        </>
-                    )}
+            <Modal backdrop="transparent" isOpen={isOpen} onOpenChange={onClose} className="flex items-center justify-center">
+                <ModalContent className="w-full max-w-lg md:max-w-3xl rounded-lg overflow-hidden">
+                    <ModalHeader className="text-lg md:text-xl lg:text-2xl font-bold py-4 px-6 border-b border-gray-200">Downloadable Version</ModalHeader>
+                    <ModalBody className="py-4 px-6">
+                        <p className="text-sm md:text-base lg:text-lg mb-4">
+                            Customize your download experience with our Download Options modal. Choose the version that fits your needs best and get started in seconds!
+                        </p>
+                        {releases.map(release => (
+                            <div key={release.id} className="flex justify-between items-center mb-2">
+                                <Chip variant="faded" color="success" className="mr-2">
+                                    {release.tag_name}
+                                </Chip>
+                                <div className="flex items-center">
+                                    <Button
+                                        variant="solid"
+                                        radius="sm"
+                                        color="primary"
+                                        disableRipple
+                                        onPress={() => window.location.href = release.assets[3].browser_download_url}
+                                        startContent={<DownloadIcon size={15} color={"#ffffff"}/>}
+                                        className="relative mr-2"
+                                    >
+                                        Download
+                                    </Button>
+                                    <Button
+                                        variant="solid"
+                                        radius="sm"
+                                        color="default"
+                                        disableRipple
+                                        onPress={() => {
+                                            setReleaseBody(release.body);
+                                            onOpenReleaseBody();
+                                        }}
+                                        className="relative"
+                                    >
+                                        View Notes
+                                    </Button>
+                                </div>
+                            </div>
+                        ))}
+                    </ModalBody>
+                    <ModalFooter className="py-4 px-6 border-t border-gray-200 flex justify-end">
+                        <Button color="default" variant="faded" onPress={onClose}>
+                            Close
+                        </Button>
+                    </ModalFooter>
                 </ModalContent>
             </Modal>
-            <Modal backdrop={"transparent"} isOpen={isReleaseBodyOpen} onOpenChange={onCloseReleaseBody}>
-                <ModalContent
-                    className="w-full h-full overflow-auto p-5 rounded-lg shadow-lg max-w-screen-md sm:max-w-screen-lg md:max-w-screen-xl lg:max-w-screen-2xl">
-                    <ModalHeader className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2">Release
-                        Body</ModalHeader>
-                    <ModalBody className="mb-4 text-sm sm:text-base md:text-lg lg:text-xl">
+
+            <Modal size={"2xl"} backdrop="transparent" isOpen={isReleaseBodyOpen} onOpenChange={onCloseReleaseBody} className="w-full flex items-center justify-center">
+                <ModalContent className="w-full max-w-4xl rounded-lg overflow-hidden">
+                    <ModalHeader className="text-xl md:text-2xl lg:text-3xl font-bold py-4 px-6 border-b border-gray-200">Release Body</ModalHeader>
+                    <ModalBody className="py-4 px-6 overflow-auto max-h-80">
                         <ReactMarkdown>{releaseBody}</ReactMarkdown>
                     </ModalBody>
-                    <ModalFooter className="flex justify-end">
+                    <ModalFooter className="py-4 px-6 border-t border-gray-200 flex justify-end">
                         <Button color="default" variant="faded" onPress={onCloseReleaseBody}>
                             Close
                         </Button>
