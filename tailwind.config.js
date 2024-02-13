@@ -11,14 +11,14 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'hero-pattern': "url('/bg-wave.png')",
+        'hero-pattern': "url('/ttten.svg')",
       },
     },
   },
   darkMode: "class",
   plugins: [nextui({
     addCommonColors: true,
-    defaultTheme: 'light',
+    defaultTheme: 'dark',
     themes: {
       light: {
         colors: {

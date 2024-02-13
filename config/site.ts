@@ -7,18 +7,22 @@ export const siteConfig = {
 	{
 		label: "Home",
 		href: "/",
+		redirect: false
 	},
     {
       label: "Docs",
-      href: "/docs",
+      href: "https://dev.pnx-wiki.pages.dev/",
+		redirect: true
     },
     {
       label: "Plugins",
       href: "/plugins",
+		redirect: true
     },
     {
       label: "Team",
       href: "/team",
+		redirect: false
     },
 	],
 	navMenuItems: [
