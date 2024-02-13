@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import {Button} from "@nextui-org/react";
-import {ArrowLeftIcon} from "@nextui-org/shared-icons";
+import {FaArrowLeft} from "react-icons/fa6";
 
 export default function Custom404() {
     const router = useRouter()
@@ -15,7 +15,7 @@ export default function Custom404() {
                     className="font-bold"
                     variant="faded"
                     color="success"
-                    startContent={<ArrowLeftIcon fontSize={25}/>}
+                    startContent={<FaArrowLeft fontSize={25}/>}
                     onClick={() => router.push('/')}
                 >
                     Return to the home page
