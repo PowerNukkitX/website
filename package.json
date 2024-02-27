@@ -20,7 +20,7 @@
     "@nextui-org/theme": "^2.1.17",
     "@types/canvas-confetti": "^1.6.4",
     "@types/node": "20.11.17",
-    "@types/react": "18.2.55",
+    "@types/react": "18.2.60",
     "@types/react-dom": "18.2.19",
     "autoprefixer": "10.4.17",
     "axios": "^1.6.7",
