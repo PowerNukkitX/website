@@ -37,7 +37,7 @@ const FeatureHome: React.FC = () => {
 
     return (
         <section id="features">
-            <div className="mx-auto max-w-screen-xl gap-12 px-4 py-28 md:px-8">
+            <div className="mx-auto max-w-screen-xl gap-12 px-4 py-36 md:px-8">
                 <div className="mx-auto max-w-4xl space-y-5 text-center">
                     <h2 className="mx-auto text-4xl md:text-6xl ">
                         <span
