@@ -21,7 +21,7 @@
     "@types/canvas-confetti": "^1.6.4",
     "@types/node": "20.11.17",
     "@types/react": "18.2.63",
-    "@types/react-dom": "18.2.19",
+    "@types/react-dom": "18.2.20",
     "autoprefixer": "10.4.17",
     "axios": "^1.6.7",
     "canvas-confetti": "^1.9.2",
