@@ -18,23 +18,20 @@ const StatsSection = () => {
     ];
 
     return (
-        <section className="py-14 bg-content1">
-            <div className="max-w-screen-xl mx-auto px-4 md:px-8">
-                <div className="max-w-2xl mx-auto text-center">
-                    <h3 className="text-3xl sm:text-4xl bg-gradient-to-t from-success-300 to-success-500 bg-clip-text font-bold text-transparent">
-                        Unlock the Full Potential of Minecraft with PowerNukkitX
-                    </h3>
-                    <p className="mt-3">
-                        PowerNukkitX revolutionizes the Minecraft experience, offering both casual players and server administrators a gateway to unparalleled gameplay enhancements. Dive into a world of limitless creativity and adventure, where every download brings you closer to a community.
-                    </p>
+        <section className="py-14 p-4 min-h-[350px] flex items-center justify-center font-[sans-serif] text-[#333]">
+            <div
+                className="shadow-[0_4px_24px_-8px_rgba(0,0,0,0.2)] grid lg:grid-cols-3 sm:grid-cols-2 sm:gap-24 gap-12 rounded-3xl px-20 py-10">
+                <div className="text-center">
+                    <h3 className="text-4xl font-extrabold text-white">51 <span className="text-success">Servers</span></h3>
+                    <p className="text-gray-300 font-semibold mt-3">are running PowerNukkitX</p>
                 </div>
-                <div className="mt-12 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-                    {stats.map((item, idx) => (
-                        <div key={idx} className="bg-gradient-to-r from-emerald-500 to-emerald-800 shadow-lg rounded-lg p-6 text-center">
-                            <h4 className="text-3xl font-semibold">{item.data}</h4>
-                            <p className="mt-3 text-lg font-medium">{item.title}</p>
-                        </div>
-                    ))}
+                <div className="text-center">
+                    <h3 className="text-4xl font-extrabold text-white">8 <span className="text-success">Players</span></h3>
+                    <p className="text-gray-300 font-semibold mt-3">are playing on PowerNukkitX</p>
+                </div>
+                <div className="text-center">
+                    <h3 className="text-4xl font-extrabold text-white">384 <span className="text-success">Github Star</span></h3>
+                    <p className="text-gray-300 font-semibold mt-3">on Github</p>
                 </div>
             </div>
         </section>
