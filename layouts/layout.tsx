@@ -3,6 +3,7 @@ import {Link} from "@nextui-org/react";
 import React from "react";
 import {siteConfig} from "@/config/site";
 import NextHead from "next/head";
+import {Footer} from "@/components/footer";
 
 export default function Layout({
 	children,
@@ -38,6 +39,7 @@ export default function Layout({
 					{children}
 				</div>
 			</div>
+			<Footer/>
 		</div>
 	);
 }
