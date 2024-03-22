@@ -16,7 +16,6 @@ import {siteConfig} from "@/config/site";
 import NextLink from "next/link";
 import clsx from "clsx";
 
-import {ThemeSwitch} from "@/components/theme-switch";
 import {DiscordIcon, GithubIcon, Logo,} from "@/components/icons";
 import {useTheme} from "next-themes";
 
