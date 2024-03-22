@@ -26,7 +26,7 @@ const LandingHero = () => {
 
     return (
         <>
-            <section>
+            <section id={"home"}>
                 <div className="mx-auto max-w-screen-xl gap-12 px-8 md:px-8">
                     <div className="mx-auto max-w-4xl space-y-5 text-center">
                         {showChip && (
