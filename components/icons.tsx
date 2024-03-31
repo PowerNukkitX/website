@@ -30,6 +30,7 @@ export const Logo = ({ size = 35, width, height, ...props }: IconSvgProps) => (
 		alt="PowerNukkitX logo"
 		width={typeof size === 'number' ? size : (width ? Number(width) : undefined)}
 		height={typeof size === 'number' ? size : (height ? Number(height) : undefined)}
+		className={"rounded-sm"}
 		{...props}
 	/>
 );
