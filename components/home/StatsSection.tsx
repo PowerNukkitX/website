@@ -69,7 +69,7 @@ const StatsSection = () => {
                     <p className="text-gray-300 font-semibold mt-3">are playing on PowerNukkitX</p>
                 </div>
                 <div className="text-center">
-                    <h3 className="text-4xl font-extrabold text-white">{stars} <span className="text-success">Github Star</span>
+                    <h3 className="text-4xl font-extrabold text-white">{stars} <span className="text-success">Github Stars</span>
                     </h3>
                     <p className="text-gray-300 font-semibold mt-3">on Github</p>
                 </div>
