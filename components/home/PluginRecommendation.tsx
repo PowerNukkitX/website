@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from 'react';
 import {Card, CardHeader, Button, CardFooter, CardBody, ButtonGroup, Image} from '@nextui-org/react';
 
-const PluginRecomendation = () => {
+const PluginRecommendation = () => {
 
     return (
         <section id="plugins">
@@ -10,7 +9,7 @@ const PluginRecomendation = () => {
                     <h2 className="mx-auto text-4xl md:text-6xl ">
                         <span
                             className="bg-gradient-to-t from-success-300 to-success-500 bg-clip-text font-bold text-transparent">
-                            Plugin Recomendation
+                            Plugin Recommendations
                         </span>{" "}
                     </h2>
                     <p className="mx-auto max-w-2xl text-xl">
@@ -121,4 +120,4 @@ const PluginRecomendation = () => {
     );
 };
 
-export default PluginRecomendation;
+export default PluginRecommendation;

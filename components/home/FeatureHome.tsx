@@ -42,7 +42,7 @@ const FeatureHome: React.FC = () => {
                     <h2 className="mx-auto text-4xl md:text-6xl ">
                         <span
                             className="bg-gradient-to-t from-success-300 to-success-500 bg-clip-text font-bold text-transparent">
-                            Looking for powerful server solutions ?
+                            Looking for a powerful server solution?
                         </span>{" "}
                     </h2>
                     <p className="mx-auto max-w-2xl text-xl">
