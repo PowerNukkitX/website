@@ -39,9 +39,9 @@ const StatsSection = () => {
     const [totalPlayers, setTotalPlayers] = useState(0);
 
     useEffect(() => {
-        fetch('https://api.powernukkitx.cn/v2/git/star')
+        fetch('https://api.github.com/repos/PowerNukkitX/PowerNukkitX')
             .then(response => response.json())
-            .then(data => setStars(data.star))
+            .then(data => setStars(data.stargazers_count))
             .catch(error => console.error('Error:', error));
         refreshPNXServers((count) => {
             setServers(count);
