@@ -49,16 +49,17 @@ export const Navbar = () => {
 								{item.label}
 							</Button>
 						) : (
-							<Button
-								className={clsx(
-									linkStyles({ color: "foreground" }),
-									"data-[active=true]:text-primary data-[active=true]:font-medium"
-								)}
-								variant="light"
-								href={item.href}
-							>
-								{item.label}
-							</Button>
+							<NextLink href={item.href}>
+								<Button
+									className={clsx(
+										linkStyles({ color: "foreground" }),
+										"data-[active=true]:text-primary data-[active=true]:font-medium"
+									)}
+									variant="light"
+								>
+									{item.label}
+								</Button>
+							</NextLink>
 						)}
 					</NavbarItem>
 				))}
@@ -66,10 +67,10 @@ export const Navbar = () => {
 			<NavbarContent className="hidden sm:flex basis-1/5 sm:basis-full" justify="end">
 				<NavbarItem className="hidden sm:flex gap-2">
 					<Link isExternal href={siteConfig.links.discord}>
-						<DiscordIcon className={resolvedTheme === 'light' ? 'text-default-500' : 'text-black'} />
+						<DiscordIcon className="text-black" />
 					</Link>
 					<Link isExternal href={siteConfig.links.github}>
-						<GithubIcon className={resolvedTheme === 'light' ? 'text-default-500' : 'text-black'} />
+						<GithubIcon className="text-black" />
 					</Link>
 				</NavbarItem>
 			</NavbarContent>
@@ -80,7 +81,7 @@ export const Navbar = () => {
 				<div className="mx-4 mt-2 flex flex-col gap-2">
 					{siteConfig.navMenuItems.map((item, index) => (
 						<NavbarMenuItem key={`${item}-${index}`}>
-							<Link color="foreground" href="#" size="lg">
+							<Link color="foreground" href={item.href} size="lg">
 								{item.label}
 							</Link>
 						</NavbarMenuItem>

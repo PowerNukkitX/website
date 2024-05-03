@@ -1,9 +1,7 @@
-import React, {useEffect, useMemo, useState} from "react";
-import { Button, Chip, Image, Input, Textarea } from "@nextui-org/react";
+import React, {useState} from "react";
+import { Button, Chip} from "@nextui-org/react";
 import { FaArrowDown, FaPlus } from "react-icons/fa6";
-import NextImage from "next/image";
 import Link from "next/link";
-import confetti from "canvas-confetti";
 
 interface Release {
     id: number;
@@ -13,16 +11,9 @@ interface Release {
 }
 
 const LandingHero = () => {
-    const handleClick = () => {
-        confetti({
-            particleCount: 250,
-            spread: 160,
-            origin: {y: 0.6},
-        });
-    };
 
     const [showChip, setShowChip] = useState(true);
-    const [chipText, setChipText] = useState("PowerNukkitX is ready");
+    const [chipText, setChipText] = useState("PowerNukkitX version 2.0");
 
     return (
         <>

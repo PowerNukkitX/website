@@ -55,7 +55,7 @@ const StatsSection = () => {
     }, []);
 
     return (
-        <section id={"stats"} className="py-14 p-4 min-h-[350px] flex items-center justify-center font-[sans-serif] text-[#333]">
+        <section id={"stats"} className="py-14 p-4 min-h-[350px] flex items-center justify-center font-bold text-[#333]">
             <div
                 className="grid lg:grid-cols-3 sm:grid-cols-2 sm:gap-24 gap-12 rounded-xl px-20 py-10 bg-content1">
                 <div className="text-center">
@@ -69,7 +69,7 @@ const StatsSection = () => {
                     <p className="text-gray-300 font-semibold mt-3">are playing on PowerNukkitX</p>
                 </div>
                 <div className="text-center">
-                    <h3 className="text-4xl font-extrabold text-white">{stars} <span className="text-success">Github Star</span>
+                    <h3 className="text-4xl font-extrabold text-white">{stars} <span className="text-success">Github Stars</span>
                     </h3>
                     <p className="text-gray-300 font-semibold mt-3">on Github</p>
                 </div>

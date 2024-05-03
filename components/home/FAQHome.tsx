@@ -2,12 +2,11 @@ import React from 'react';
 import {Accordion, AccordionItem, Link, Spacer} from "@nextui-org/react";
 import { FaArrowLeft } from "react-icons/fa6";
 import {FaDiscord} from "react-icons/fa";
-import {DiscordIcon} from "@/components/icons";
 
 const FAQSection = () => {
     return (
         <section id="faqs">
-            <Spacer y={44} />
+            <Spacer y={24} />
             <div className="mx-auto max-w-screen-xl gap-12 px-4 md:px-8">
                 <div className="mx-auto max-w-4xl space-y-5 text-center">
                     <h2 className="mx-auto text-4xl md:text-6xl">
@@ -29,8 +28,8 @@ const FAQSection = () => {
                         <Accordion variant="light">
                             <AccordionItem
                                 key="1"
-                                aria-label="What is PowerNukkitX and how can it help me ?"
-                                title="What is PowerNukkitX and how can it help me ?"
+                                aria-label="What is PowerNukkitX and how can it help me?"
+                                title="What is PowerNukkitX and how can it help me?"
                                 indicator={
                                     <FaArrowLeft size={20} className="text-success" />
                                 }
@@ -39,8 +38,8 @@ const FAQSection = () => {
                             </AccordionItem>
                             <AccordionItem
                                 key="2"
-                                aria-label="How does PowerNukkitX differ from traditional Minecraft server software ?"
-                                title="How does PowerNukkitX differ from traditional Minecraft server software ?"
+                                aria-label="How does PowerNukkitX differ from traditional Minecraft server software?"
+                                title="How does PowerNukkitX differ from traditional Minecraft server software?"
                                 indicator={
                                     <FaArrowLeft size={20} className="text-success" />
                                 }
@@ -49,8 +48,8 @@ const FAQSection = () => {
                             </AccordionItem>
                             <AccordionItem
                                 key="3"
-                                aria-label="Is PowerNukkitX free to use ?"
-                                title="Is PowerNukkitX free to use ?"
+                                aria-label="Is PowerNukkitX free to use?"
+                                title="Is PowerNukkitX free to use?"
                                 indicator={
                                     <FaArrowLeft size={20} className="text-success" />
                                 }
@@ -59,19 +58,19 @@ const FAQSection = () => {
                             </AccordionItem>
                             <AccordionItem
                                 key="4"
-                                aria-label="Where can I get support for PowerNukkitX ?"
-                                title="Where can I get support for PowerNukkitX ?"
+                                aria-label="Where can I get support for PowerNukkitX?"
+                                title="Where can I get support for PowerNukkitX?"
                                 indicator={
                                     <FaArrowLeft size={20} className="text-success" />
                                 }
                             >
-                                You can get support for <span className="text-success">PowerNukkitX</span> from the <Link className="text-success font-bold" isExternal showAnchorIcon href="https://discord.gg/RprjEqWUMX" anchorIcon={<FaDiscord size={20}/>}>official Discord server</Link>. There are also extensive <Link className="text-success font-bold" isExternal showAnchorIcon href="https://dev.pnx-wiki.pages.dev/">documentation</Link>
+                                You can get support for <span className="text-success">PowerNukkitX</span> from the <Link className="text-success font-bold" isExternal showAnchorIcon href="https://discord.gg/RprjEqWUMX" anchorIcon={<FaDiscord size={20}/>}>official Discord server</Link>. There is also extensive <Link className="text-success font-bold" isExternal showAnchorIcon href="https://dev.pnx-wiki.pages.dev/">documentation</Link>
                                 and tutorials available to help you with setting up and managing your server.
                             </AccordionItem>
                             <AccordionItem
                                 key="5"
-                                aria-label="How do I create our first plugin for PowerNukkitX ?"
-                                title="How do I create our first plugin for PowerNukkitX ?"
+                                aria-label="How do I create our first plugin for PowerNukkitX?"
+                                title="How do I create our first plugin for PowerNukkitX?"
                                 indicator={
                                     <FaArrowLeft size={20} className="text-success" />
                                 }
