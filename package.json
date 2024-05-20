@@ -26,7 +26,7 @@
     "axios": "^1.6.7",
     "canvas-confetti": "^1.9.2",
     "clsx": "^2.0.0",
-    "eslint": "^8.0.0",
+    "eslint": "^9.3.0",
     "eslint-config-next": "14.2.3",
     "framer-motion": "^11.0.3",
     "intl-messageformat": "^10.5.0",
