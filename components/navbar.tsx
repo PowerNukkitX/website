@@ -12,19 +12,16 @@ import {
 
 import CountUp from 'react-countup';
 
-import {link as linkStyles} from "@nextui-org/theme";
-
 import {siteConfig} from "@/config/site";
 import NextLink from "next/link";
-import clsx from "clsx";
 
 import {DiscordIcon, GithubIcon, Logo,} from "@/components/icons";
-import {useTheme} from "next-themes";
-import {useEffect, useState} from "react";
-import axios from "axios";
+import {useDiscord} from "@/libs/discord";
 
 export const Navbar = () => {
-	const {resolvedTheme} = useTheme();
+
+	const {data: discordData} = useDiscord();
+
 	return (
 		<NextUINavbar maxWidth="xl" position="sticky" className="mb-4 top-0" style={{ zIndex: 1000 }}>
 			<NavbarContent className="basis-1/5 sm:basis-full" justify="start">
@@ -78,7 +75,18 @@ export const Navbar = () => {
 								 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
 								 stroke-linejoin="round" className="lucide lucide-user"><path
 								d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-							<MemberCount/>
+							<span className="text-white ml-2">
+      							Join{' '}
+								<CountUp start={0}
+										 end={discordData?.memberCount ?? 0}
+										 duration={15}
+										 delay={0}>
+        								{({countUpRef}) => (
+											<span ref={countUpRef}/>
+										)}
+      							</CountUp>
+								+ members
+							</span>
 						</span>
 					</Button>
 				</NavbarItem>
@@ -110,32 +118,3 @@ export const Navbar = () => {
 };
 
 export default Navbar;
-
-const MemberCount = () => {
-	const [memberCount, setMemberCount] = useState(0);
-
-	useEffect(() => {
-		const fetchMemberCount = async () => {
-			try {
-				const response = await axios.get('https://discord.com/api/v9/invites/EQdDkhvxRb?with_counts=true&with_expiration=true');
-				setMemberCount(response.data.approximate_member_count);
-			} catch (error) {
-				console.error('Erreur lors de la récupération du nombre de membres:', error);
-			}
-		};
-
-		fetchMemberCount().then(r => r).catch(e => e);
-	}, []);
-
-	return (
-		<span className="text-white ml-2">
-      Join{' '}
-			<CountUp start={0} end={memberCount} duration={15} delay={0}>
-        {({countUpRef}) => (
-			<span ref={countUpRef}/>
-		)}
-      </CountUp>
-      + members
-    </span>
-	);
-};

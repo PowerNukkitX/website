@@ -1,21 +1,20 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { Button, Chip} from "@nextui-org/react";
-import { FaArrowDown, FaPlus } from "react-icons/fa6";
 import Link from "next/link";
 import {siteConfig} from "@/config/site";
 import {CubeIcon, FlameIcon, GithubIcon} from "@/components/icons";
-
-interface Release {
-    id: number;
-    tag_name: string;
-    assets: { browser_download_url: string }[];
-    body: string;
-}
+import {useGithub} from "@/libs/github";
 
 const LandingHero = () => {
 
     const [showChip, setShowChip] = useState(true);
     const [chipText, setChipText] = useState("PowerNukkitX version 2.0");
+
+    const { data: stars, error } = useGithub();
+
+    if (error) {
+        console.error('An error occurred:', error);
+    }
 
     return (
         <>
@@ -72,7 +71,7 @@ const LandingHero = () => {
                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                  stroke-linejoin="round" className="lucide lucide-star"><polygon
                                 points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-							<span className="text-white ml-2">612</span>
+							<span className="text-white ml-2">{stars?.stargazers_count ?? 0}</span>
 						        </span>
                         </Button>
                     </div>

@@ -1,8 +1,8 @@
 import Layout from "@/layouts/layout";
 import Image from "next/image";
-import Link from "next/link";
-import config from "tailwindcss/defaultConfig";
 import {siteConfig} from "@/config/site";
+import {Avatar} from "@nextui-org/react";
+import {useContributors} from "@/libs/github";
 
 const teamData = [
     // Core Team
@@ -39,10 +39,19 @@ const TeamMember = ({ name, role, imageUrl }) => (
     </div>
 );
 
+// @ts-ignore
+const Contributor = ({ name, imageURL, htmlurl}) => (
+    <a href={htmlurl} target="_blank" rel="noopener noreferrer">
+        <Avatar src={imageURL} className="mx-auto" />
+    </a>
+);
+
 export default function Team() {
     const coreTeamMembers = teamData.filter(member => member.team === 'Core Team');
     const coreDevMembers = teamData.filter(member => member.team === 'Core Dev');
     const DevContributorMembers = teamData.filter(member => member.team === 'Dev/Contributor');
+
+    const { data: contributors } = useContributors();
 
     return (
         <Layout>
@@ -100,9 +109,11 @@ export default function Team() {
                             <h2
                                 className="text-4xl font-bold leading-[4rem] mb-7 text-center lg:text-left">
                                 Would you like to join us?</h2>
-                            <p className="text-lg text-white mb-16 text-center lg:text-left">We are always looking for new talents to join our team. If you are passionate about technology and want to contribute to the development of PowerNukkitX, we would be happy to welcome you.</p>
+                            <p className="text-lg text-white mb-16 text-center lg:text-left">We are always looking for
+                                new talents to join our team. If you are passionate about technology and want to
+                                contribute to the development of PowerNukkitX, we would be happy to welcome you.</p>
                             <a href={siteConfig.links.discord}
-                                className="cursor-pointer py-3 px-8 w-60 bg-success-300 text-white text-base font-semibold transition-all duration-500 block text-center rounded-full hover:bg-success-500 mx-auto lg:mx-0">Join
+                               className="cursor-pointer py-3 px-8 w-60 bg-success-300 text-white text-base font-semibold transition-all duration-500 block text-center rounded-full hover:bg-success-500 mx-auto lg:mx-0">Join
                                 our team
                             </a>
                         </div>
@@ -112,11 +123,27 @@ export default function Team() {
                                     .sort(() => 0.5 - Math.random())
                                     .slice(0, 6)
                                     .map((member, index) => (
-                                        <Image key={index} src={member.imageUrl} alt={member.name}
-                                             className="w-44 h-56 rounded-2xl object-cover md:mt-20 mx-auto min-[450px]:mr-0"/>
+                                        <Image key={index} src={member.imageUrl} alt={member.name} width={176}
+                                               height={200}
+                                               className="w-44 h-56 rounded-2xl object-cover md:mt-20 mx-auto min-[450px]:mr-0"/>
                                     ))}
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+            <section id={"contributor"}>
+                <div className="mx-auto flex flex-col items-center text-center mb-8 max-w-screen-sm lg:mb-16">
+                    <h2 className="mb-4 text-4xl tracking-tight text-success font-bold md:text-4xl lg:text-8xl">Contributors</h2>
+                    <p className="mx-auto max-w-2xl text-xl">Discover our dedicated, passionate, and expert team, ready to tackle any
+                        challenge to provide you with the best services.</p>
+                </div>
+                <div className="container mx-auto px-2 md:px-10 xl:px-8">
+                    <div className="grid gap-1 items-center md:grid-cols-12">
+                        {Array.isArray(contributors) && contributors.map((contributor, index) => (
+                            <Contributor name={contributor.login} imageURL={contributor.avatar_url}
+                                         htmlurl={contributor.html_url} key={index} {...contributor} />
+                        ))}
                     </div>
                 </div>
             </section>

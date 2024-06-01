@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {GithubIcon, ServerIcon, UserIcon} from "@/components/icons";
 import CountUp from 'react-countup';
+import useSWR from "swr";
+import {useMinecraft} from "@/libs/minecraft";
+import {useGithub} from "@/libs/github";
 
 async function fetchData(url: string) {
     const response = await fetch(url);
@@ -11,34 +14,9 @@ async function fetchData(url: string) {
 }
 
 const StatsSection = () => {
-    const [stats, setStats] = useState({
-        stars: 0,
-        servers: 0,
-        players: 0,
-        totalServers: 0,
-        totalPlayers: 0
-    });
 
-    useEffect(() => {
-        Promise.all([
-            fetchData('https://api.github.com/repos/PowerNukkitX/PowerNukkitX'),
-            fetchData('https://bstats.org/api/v1/plugins/16708/charts/servers/data'),
-            fetchData('https://bstats.org/api/v1/plugins/16708/charts/players/data')
-        ]).then(([githubData, serversData, playersData]) => {
-            const stars = githubData.stargazers_count;
-            const servers = serversData[serversData.length - 1][1];
-            const players = playersData[playersData.length - 1][1];
-
-            setStats(prevStats => ({
-                ...prevStats,
-                stars,
-                servers,
-                players,
-                totalServers: prevStats.totalServers + servers,
-                totalPlayers: prevStats.totalPlayers + players
-            }));
-        }).catch(error => console.error('Error fetching data:', error));
-    }, []);
+    const {data: stats, error} = useMinecraft();
+    const {data: githubStats, error: githubError} = useGithub()
 
     return (
         <section id={"stats"} className="grid lg:grid-cols-2 sm:grid-cols-1 m-4">
@@ -62,7 +40,7 @@ const StatsSection = () => {
                         </div>
 
                         <h3 className="text-4xl font-extrabold text-white">
-                            <CountUp start={0} end={stats.totalServers} duration={8} delay={0}>
+                            <CountUp start={0} end={stats?.servers ?? 0} duration={8} delay={0}>
                                 {({countUpRef}) => (
                                     <span ref={countUpRef}/>
                                 )}
@@ -76,7 +54,7 @@ const StatsSection = () => {
                             <UserIcon className="mx-auto w-12 h-12"/>
                         </div>
                         <h3 className="text-4xl font-extrabold text-white">
-                            <CountUp start={0} end={stats.totalPlayers} duration={8} delay={0}>
+                            <CountUp start={0} end={stats?.players ?? 0} duration={8} delay={0}>
                                 {({countUpRef}) => (
                                     <span ref={countUpRef}/>
                                 )}
@@ -90,7 +68,7 @@ const StatsSection = () => {
                             <GithubIcon className="mx-auto w-12 h-12"/>
                         </div>
                         <h3 className="text-4xl font-extrabold text-white">
-                            <CountUp start={0} end={stats.stars} duration={8} delay={0}>
+                            <CountUp start={0} end={githubStats?.stargazers_count ?? 0} duration={8} delay={0}>
                                 {({countUpRef}) => (
                                     <span ref={countUpRef}/>
                                 )}
