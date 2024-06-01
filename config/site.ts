@@ -11,7 +11,7 @@ export const siteConfig = {
 	},
     {
       label: "Docs",
-      href: "https://dev.pnx-wiki.pages.dev/",
+      href: "https://docs.powernukkitx.com/",
 		redirect: true
     },
     {

@@ -11,7 +11,7 @@ const FAQSection = () => {
                 <div className="mx-auto max-w-4xl space-y-5 text-center">
                     <h2 className="mx-auto text-4xl md:text-6xl">
 							<span
-                                className="bg-gradient-to-t from-success-300 to-success-500 bg-clip-text text-transparent">
+                                className="bg-gradient-to-t from-success-300 to-success-500 bg-clip-text text-transparent font-bold">
 								If you have any queries or concerns,
 							</span>{" "}
                         <span className="underline decoration-success">

@@ -11,7 +11,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'hero-pattern': "url('/ttten.svg')",
+        'error-bg': "url('/Nether_Portal_background.webp')",
       },
     },
   },
