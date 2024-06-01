@@ -1,5 +1,6 @@
 import type {AppProps} from "next/app";
 import type {NextPage} from "next";
+import { Analytics } from "@vercel/analytics/react"
 import {useRouter} from "next/router";
 import {NextUIProvider} from "@nextui-org/react";
 import {ThemeProvider as NextThemesProvider} from "next-themes";
@@ -13,6 +14,7 @@ export default function App({ Component, pageProps }: AppProps & { Component: Ne
 			<NextThemesProvider>
 				<Component {...pageProps} />
 			</NextThemesProvider>
+			<Analytics />
 		</NextUIProvider>
 	);
 }
