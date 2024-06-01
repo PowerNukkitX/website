@@ -112,7 +112,7 @@ export default function Team() {
                                     .sort(() => 0.5 - Math.random())
                                     .slice(0, 6)
                                     .map((member, index) => (
-                                        <img key={index} src={member.imageUrl} alt={member.name}
+                                        <Image key={index} src={member.imageUrl} alt={member.name}
                                              className="w-44 h-56 rounded-2xl object-cover md:mt-20 mx-auto min-[450px]:mr-0"/>
                                     ))}
                             </div>
