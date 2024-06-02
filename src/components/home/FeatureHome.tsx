@@ -1,5 +1,4 @@
 import React from 'react';
-import {FaCode, FaCubes, FaRocket, FaServer, FaToolbox, FaUsersCog} from "react-icons/fa";
 import {AnvilIcon, CodeIcon, CommunityIcon, PerformanceIcon, PluginIcon, ServerIcon} from "@/components/icons";
 
 const FeatureHome: React.FC = () => {

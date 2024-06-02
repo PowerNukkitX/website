@@ -1,6 +1,6 @@
 import React from 'react';
 import {Accordion, AccordionItem, Link, Spacer} from "@nextui-org/react";
-import { FaArrowLeft } from "react-icons/fa6";
+import {FaArrowLeft} from "react-icons/fa6";
 import {FaDiscord} from "react-icons/fa";
 
 const FAQSection = () => {

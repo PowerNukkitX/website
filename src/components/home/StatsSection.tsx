@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {GithubIcon, ServerIcon, UserIcon} from "@/components/icons";
 import CountUp from 'react-countup';
-import useSWR from "swr";
 import {useMinecraft} from "@/libs/minecraft";
 import {useGithub} from "@/libs/github";
 

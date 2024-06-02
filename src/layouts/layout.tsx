@@ -1,5 +1,4 @@
 import {Navbar} from "@/components/navbar";
-import {Link} from "@nextui-org/react";
 import React from "react";
 import {siteConfig} from "@/config/site";
 import NextHead from "next/head";

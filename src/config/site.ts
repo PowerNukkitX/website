@@ -4,11 +4,6 @@ export const siteConfig = {
 	name: "Home",
 	description: "PowerNukkitX is a server software for Minecraft Bedrock that always aims to be the best, pushing the boundaries of creation.",
 	navItems: [
-	{
-		label: "Home",
-		href: "/",
-		redirect: false
-	},
     {
       label: "Docs",
       href: "https://docs.powernukkitx.com/",

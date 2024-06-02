@@ -1,7 +1,6 @@
 import * as React from "react";
 import {IconSvgProps} from "@/types";
 import Image from "next/image";
-import {useTheme} from 'next-themes';
 
 interface IconProps {
 	className?: string

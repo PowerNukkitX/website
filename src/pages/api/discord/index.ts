@@ -1,7 +1,7 @@
 //this will change when a discord bot is created that will have the possibility is more open because the api of discord needs an authentication what the bot allows to do
 
 // pages/api/discord/memberCount.ts
-import { NextApiRequest, NextApiResponse } from 'next';
+import {NextApiRequest, NextApiResponse} from 'next';
 import axios from 'axios';
 
 const fetchDiscordData = async () => {

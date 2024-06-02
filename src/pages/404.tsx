@@ -1,8 +1,7 @@
 import {useRouter} from "next/router";
 import {Button} from "@nextui-org/react";
 import {FaArrowLeft} from "react-icons/fa6";
-import Image from "next/image";
-import { useEffect } from "react";
+import {useEffect} from "react";
 
 export default function Custom404() {
     const router = useRouter()

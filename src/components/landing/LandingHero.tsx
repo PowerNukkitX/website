@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import { Button, Chip} from "@nextui-org/react";
+import React, {useState} from "react";
+import {Button, Chip} from "@nextui-org/react";
 import Link from "next/link";
 import {siteConfig} from "@/config/site";
 import {CubeIcon, FlameIcon, GithubIcon} from "@/components/icons";
