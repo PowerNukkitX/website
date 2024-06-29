@@ -9,22 +9,27 @@ export const siteConfig = {
       href: "https://docs.powernukkitx.com/",
 		redirect: true
     },
+	{
+		label: "Downloads",
+		href: "/downloads",
+	},
     {
       label: "Plugins",
       href: "/plugins",
 		redirect: true
     },
     {
-      label: "Team",
-      href: "/team",
+      label: "Contribute",
+      href: "/contribute",
 		redirect: false
     },
+	{
+		label: "API",
+		href: "/powernukkitx-api",
+		redirect: false
+	},
 	],
 	navMenuItems: [
-		{
-			label: "Home",
-			href: "/",
-		},
 		{
 			label: "Docs",
 			href: "/docs",
@@ -34,8 +39,8 @@ export const siteConfig = {
 			href: "/plugins",
 		},
 		{
-			label: "Team",
-			href: "/team",
+			label: "Contribute",
+			href: "/contribute",
 		},
 	],
 	links: {
