@@ -1,7 +1,7 @@
 //this will change when a discord bot is created that will have the possibility is more open because the api of discord needs an authentication what the bot allows to do
 
 // pages/api/discord/memberCount.ts
-import {NextApiRequest, NextApiResponse} from 'next';
+import {NextApiResponse} from 'next';
 import axios from 'axios';
 
 const fetchDiscordData = async () => {
@@ -13,7 +13,7 @@ const fetchDiscordData = async () => {
     }
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(res: NextApiResponse) {
     const response = await fetchDiscordData();
     if (response) {
         res.status(200).json({ id: response.data.guild.id ,memberCount: response.data.approximate_member_count });

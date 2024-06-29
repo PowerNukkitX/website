@@ -1,7 +1,7 @@
 //Bstats will soon be replaced by Stats from powernukkitx, which will collect information on our users' servers.
 //We will use the data to improve our software and provide better support to our users.
 
-import {NextApiRequest, NextApiResponse} from 'next';
+import {NextApiResponse} from 'next';
 import axios from 'axios';
 
 const fetchDataServers = async () => {
@@ -22,7 +22,7 @@ const fetchDataPlayers = async () => {
     }
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(res: NextApiResponse) {
     const responseServer = await fetchDataServers();
     const responsePlayer = await fetchDataPlayers();
     if (responseServer && responsePlayer) {
