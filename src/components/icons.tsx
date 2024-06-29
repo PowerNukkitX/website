@@ -2,12 +2,16 @@ import * as React from "react";
 import {IconSvgProps} from "@/types";
 import Image from "next/image";
 import {
-	LucideAnvil, LucideBox,
-	LucideCodeXml, LucideFlame,
-	LucideGauge, LucideGithub,
+	LucideAnvil,
+	LucideCodeXml,
+	LucideDownload,
+	LucideFlame,
+	LucideGauge,
+	LucideGithub,
 	LucideMessageSquare,
 	LucidePackage,
-	LucideServer, LucideStars,
+	LucideServer,
+	LucideStars,
 	LucideUser
 } from "lucide-react";
 
@@ -42,8 +46,8 @@ export const DiscordIcon = ({}: IconProps) => (
 	</svg>
 );
 
-export const CubeIcon = ({className}: IconProps) => (
-	<LucideBox className={className}/>
+export const DownloadIcon = ({className}: IconProps) => (
+	<LucideDownload className={className}/>
 );
 
 export const FlameIcon = ({className}: IconProps) => (

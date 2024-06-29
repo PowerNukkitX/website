@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {Button, Chip} from "@nextui-org/react";
 import Link from "next/link";
 import {siteConfig} from "@/config/site";
-import {CubeIcon, FlameIcon, GithubIcon, StarIcon} from "@/components/icons";
+import {DownloadIcon, FlameIcon, GithubIcon, StarIcon} from "@/components/icons";
 import {useGithub} from "@/libs/github";
 
 const LandingHero = () => {
@@ -38,18 +38,18 @@ const LandingHero = () => {
                     PowerNukkitX
                 </span>
                         </h2>
-                        <p className="mx-auto max-w-1xl text-2xl text-emerald-100">
+                        <p className="mx-auto max-w-1xl text-2xl text-white">
                             Unleash the potential of your Minecraft server with PowerNukkitX, where performance meets flexibility, crafting an unparalleled gaming experience for you and your players.
                         </p>
                         <div className="items-center justify-center gap-x-3 space-y-3 sm:flex sm:space-y-0">
                             <Button
                                 className={"inline-flex w-48 items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 group bg-success-300 hover:bg-success-400 transition-all duration-200 ease-in-out hover:ring-2 hover:ring-offset-2 hover:ring-emerald-500"}
                                 size="md"
-                                startContent={<CubeIcon/>}
+                                startContent={<DownloadIcon className="group-hover:text-success-300 transition-colors duration-200 ease-in-out"/>}
                                 as={Link}
-                                href="https://github.com/PowerNukkitX/PowerNukkitX"
+                                href="https://github.com/PowerNukkitX/PowerNukkitX/releases"
                             >
-                                Try it out
+                                Download
                             </Button>
                             <Button
                                 className={"inline-flex w-48 items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 group bg-success-300 hover:bg-success-400 transition-all duration-200 ease-in-out hover:ring-2 hover:ring-offset-2 hover:ring-emerald-500"}

@@ -1,23 +1,36 @@
-//this will change when a discord bot is created that will have the possibility is more open because the api of discord needs an authentication what the bot allows to do
-
-// pages/api/discord/memberCount.ts
-import {NextApiResponse} from 'next';
+import {NextApiRequest, NextApiResponse} from 'next';
 import axios from 'axios';
+import NodeCache from 'node-cache';
 
-const fetchDiscordData = async () => {
+const DISCORD_API_URL = 'https://discord.com/api/v9/invites/EQdDkhvxRb?with_counts=true&with_expiration=true';
+const myCache = new NodeCache({ stdTTL: 600, checkperiod: 120 });
+
+interface DiscordData {
+    approximate_member_count: number;
+}
+
+const fetchDiscordData = async (): Promise<DiscordData> => {
     try {
-        return await axios.get('https://discord.com/api/v9/invites/EQdDkhvxRb?with_counts=true&with_expiration=true');
+        const response = await axios.get(DISCORD_API_URL);
+        return response.data;
     } catch (error) {
         console.error('Erreur lors de la récupération:', error);
-        return null;
+        throw error;
     }
 }
 
-export default async function handler(res: NextApiResponse) {
-    const response = await fetchDiscordData();
-    if (response) {
-        res.status(200).json({ id: response.data.guild.id ,memberCount: response.data.approximate_member_count });
-    } else {
-        res.status(500).json({ error: 'Erreur lors de la récupération' });
+export default async function handler(_: NextApiRequest, res: NextApiResponse) {
+    let data: DiscordData | undefined = myCache.get('discordData');
+
+    if (!data) {
+        try {
+            data = await fetchDiscordData();
+            myCache.set('discordData', data);
+        } catch (error) {
+            res.status(500).json({ error: 'Erreur lors de la récupération' });
+            return;
+        }
     }
+
+    res.status(200).json({ memberCount: data.approximate_member_count });
 }
