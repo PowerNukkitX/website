@@ -81,17 +81,14 @@ const LandingHero = () => {
                         flexibility, crafting an unparalleled gaming experience for you and your players.
                     </p>
                     <div className="flex flex-col items-center justify-center gap-3 mt-4 sm:flex-row sm:justify-center">
-                        <motion.button
-                            style={{
-                                backgroundColor: buttonBackground,
-                            }}
-                            className="inline-flex items-center justify-center w-full sm:w-auto h-12 px-6 group rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 transition-all duration-200 ease-in-out hover:ring-2 hover:ring-offset-2 hover:ring-emerald-500"
+                        <Button
+                            className={"inline-flex items-center justify-center w-full sm:w-auto h-12 px-6 group rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 py-2 group bg-success-300 hover:bg-success-400 transition-all duration-200 ease-in-out hover:ring-2 hover:ring-offset-2 hover:ring-emerald-500"}
+                            startContent={<FlameIcon className="group-hover:text-danger-400 transition-colors duration-200 ease-in-out"/>}
+                            as={Link}
+                            href="/#features"
                         >
-                            <FlameIcon
-                                className="group-hover:text-red-700 group-hover:animate-pulse animate-infinite animate-ease-linear animate-reverse transition-colors duration-200 ease-in-out"
-                            />
                             Check out features
-                        </motion.button>
+                        </Button>
                         <Button
                             as={Link}
                             href={siteConfig.links.github}
