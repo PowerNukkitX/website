@@ -45,6 +45,7 @@
     "swr": "^2.2.5",
     "tailwind-variants": "^0.2.1",
     "tailwindcss": "3.4.1",
+    "three": "^0.166.1",
     "typescript": "5.4.5"
   },
   "devDependencies": {
