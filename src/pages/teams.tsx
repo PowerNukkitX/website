@@ -30,7 +30,13 @@ const teamData = [
 const TeamMember = ({ name, role, imageUrl }) => (
     <div className="space-y-4 text-center">
         <div className="relative w-64 h-64 mx-auto md:w-40 md:h-40 lg:w-64 lg:h-64">
-            <Image src={imageUrl} alt={name} layout="fill" objectFit="cover" className="rounded-xl" />
+            <Image
+                src={imageUrl}
+                alt={name}
+                width={128}
+                height={128}
+                className="object-cover rounded-xl w-full h-full"
+            />
         </div>
         <div>
             <h4 className="text-2xl">{name}</h4>
@@ -40,13 +46,14 @@ const TeamMember = ({ name, role, imageUrl }) => (
 );
 
 // @ts-ignore
-const Contributor = ({ name, imageURL, htmlurl}) => (
-    <a href={htmlurl} target="_blank" rel="noopener noreferrer">
+const Contributor = ({ name, imageURL, htmlurl }) => (
+    <a href={htmlurl} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center space-y-2">
         <Avatar src={imageURL} className="mx-auto" />
+        <span className="text-sm text-gray-500">{name}</span>
     </a>
 );
 
-export default function Team() {
+export default function Teams() {
     const coreTeamMembers = teamData.filter(member => member.team === 'Core Team');
     const coreDevMembers = teamData.filter(member => member.team === 'Core Dev');
     const DevContributorMembers = teamData.filter(member => member.team === 'Dev/Contributor');
@@ -132,14 +139,14 @@ export default function Team() {
                     </div>
                 </div>
             </section>
-            <section id={"contributor"}>
+            <section id="contributor" className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
                 <div className="mx-auto flex flex-col items-center text-center mb-8 max-w-screen-sm lg:mb-16">
                     <h2 className="mb-4 text-4xl tracking-tight text-success font-bold md:text-4xl lg:text-8xl">Contributors</h2>
-                    <p className="mx-auto max-w-2xl text-xl">Discover our dedicated, passionate, and expert team, ready to tackle any
-                        challenge to provide you with the best services.</p>
+                    <p className="mx-auto max-w-2xl text-xl">Discover our dedicated, passionate, and expert team, ready
+                        to tackle any challenge to provide you with the best services.</p>
                 </div>
                 <div className="container mx-auto px-2 md:px-10 xl:px-8">
-                    <div className="grid gap-1 items-center md:grid-cols-12">
+                    <div className="grid gap-4 items-center md:grid-cols-4 lg:grid-cols-6">
                         {Array.isArray(contributors) && contributors.map((contributor, index) => (
                             <Contributor name={contributor.login} imageURL={contributor.avatar_url}
                                          htmlurl={contributor.html_url} key={index} {...contributor} />

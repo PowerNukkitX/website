@@ -1,33 +1,42 @@
-//Bstats will soon be replaced by Stats from powernukkitx, which will collect information on our users' servers.
-//We will use the data to improve our software and provide better support to our users.
-
 import {NextApiRequest, NextApiResponse} from 'next';
 import axios from 'axios';
+import NodeCache from 'node-cache';
 
-const fetchDataServers = async () => {
+const MINECRAFT_API_URL_SERVERS = 'https://bstats.org/api/v1/plugins/16708/charts/servers/data';
+const MINECRAFT_API_URL_PLAYERS = 'https://bstats.org/api/v1/plugins/16708/charts/players/data';
+const myCache = new NodeCache({ stdTTL: 600, checkperiod: 120 });
+
+interface MinecraftData {
+    servers: number;
+    players: number;
+}
+
+const fetchMinecraftData = async (): Promise<MinecraftData> => {
     try {
-        return await axios.get('https://bstats.org/api/v1/plugins/16708/charts/servers/data');
+        const responseServers = await axios.get(MINECRAFT_API_URL_SERVERS);
+        const responsePlayers = await axios.get(MINECRAFT_API_URL_PLAYERS);
+        return {
+            servers: responseServers.data[responseServers.data.length - 1][1],
+            players: responsePlayers.data[responsePlayers.data.length - 1][1]
+        };
     } catch (error) {
         console.error('Erreur lors de la récupération:', error);
-        return null;
+        throw error;
     }
 }
 
-const fetchDataPlayers = async () => {
-    try {
-        return await axios.get('https://bstats.org/api/v1/plugins/16708/charts/players/data');
-    } catch (error) {
-        console.error('Erreur lors de la récupération:', error);
-        return null;
-    }
-}
+export default async function handler(_: NextApiRequest, res: NextApiResponse) {
+    let data: MinecraftData | undefined = myCache.get('minecraftData');
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    const responseServer = await fetchDataServers();
-    const responsePlayer = await fetchDataPlayers();
-    if (responseServer && responsePlayer) {
-        res.status(200).json({ servers: responseServer.data[responseServer.data.length - 1][1], players: responsePlayer.data[responsePlayer.data.length - 1][1]});
-    } else {
-        res.status(500).json({ error: 'Erreur lors de la récupération' });
+    if (!data) {
+        try {
+            data = await fetchMinecraftData();
+            myCache.set('minecraftData', data);
+        } catch (error) {
+            res.status(500).json({ error: 'Erreur lors de la récupération' });
+            return;
+        }
     }
+
+    res.status(200).json(data);
 }

@@ -1,8 +1,8 @@
-import {Navbar} from "@/components/navbar";
 import React from "react";
 import {siteConfig} from "@/config/site";
 import NextHead from "next/head";
 import {Footer} from "@/components/footer";
+import NavbarPNX from "@/components/navbar";
 
 export default function Layout({
 	children,
@@ -32,7 +32,7 @@ export default function Layout({
 				/>
 				<link href="/favicon.ico" rel="icon"/>
 			</NextHead>
-			<Navbar/>
+			<NavbarPNX/>
 			<div className="flex flex-1 flex-col">
 				<div className="flex flex-1 flex-col">
 					{children}

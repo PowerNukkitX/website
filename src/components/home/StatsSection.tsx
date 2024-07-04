@@ -4,18 +4,10 @@ import CountUp from 'react-countup';
 import {useMinecraft} from "@/libs/minecraft";
 import {useGithub} from "@/libs/github";
 
-async function fetchData(url: string) {
-    const response = await fetch(url);
-    if (!response.ok) {
-        throw new Error('Network response was not ok');
-    }
-    return response.json();
-}
-
 const StatsSection = () => {
 
-    const {data: stats, error} = useMinecraft();
-    const {data: githubStats, error: githubError} = useGithub()
+    const {data: stats} = useMinecraft();
+    const {data: githubStats} = useGithub()
 
     return (
         <section id={"stats"} className="grid lg:grid-cols-2 sm:grid-cols-1 m-4">
