@@ -18,6 +18,8 @@
   "dependencies": {
     "@nextui-org/react": "^2.4.0",
     "@nextui-org/theme": "^2.2.5",
+    "@react-three/drei": "^9.108.1",
+    "@react-three/fiber": "^8.16.8",
     "@types/node": "20.12.8",
     "@types/react": "18.2.67",
     "@types/react-dom": "18.2.25",
@@ -27,7 +29,7 @@
     "clsx": "^2.0.0",
     "eslint": "^8.0.0",
     "eslint-config-next": "14.2.3",
-    "framer-motion": "^11.0.3",
+    "framer-motion": "^11.2.12",
     "intl-messageformat": "^10.5.0",
     "lucide-react": "^0.383.0",
     "next": "14.2.3",
@@ -46,6 +48,7 @@
     "typescript": "5.4.5"
   },
   "devDependencies": {
+    "tailwindcss-animated": "^1.1.2",
     "webpack": "^5.90.1"
   }
 }

@@ -12,11 +12,10 @@ export interface Contributor {
     contributions: number;
 }
 
-const REPOSITORIES_URL = 'https://api.github.com/repos/PowerNukkitX/PowerNukkitX';
 const fetchers = (url: string) => fetch(url).then((res) => res.json());
 
 export const useGithub = (): SWRResponse<RepositoryInfo, any> => useSWR('/api/github', fetchers);
 
 export function useContributors(): SWRResponse<Contributor[], any> {
-    return useSWR<Contributor[]>(REPOSITORIES_URL + `/contributors?per_page=100`, fetchers);
+    return useSWR<Contributor[]>('/api/github/contributors', fetchers);
 }

@@ -15,28 +15,56 @@ interface GithubData {
     watchers: number;
 }
 
+interface Contributor {
+    login: string;
+    id: number;
+    avatar_url: string;
+    html_url: string;
+    contributions: number;
+}
+
 const fetchGithubData = async (): Promise<GithubData> => {
     try {
         const response = await axios.get(GITHUB_API_URL);
         return response.data;
     } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching GitHub data:', error);
         throw error;
     }
 }
 
-export default async function handler(_: NextApiRequest, res: NextApiResponse) {
-    let data: GithubData | undefined = myCache.get('githubData');
+const fetchContributors = async (): Promise<Contributor> => {
+    const response = await axios.get(GITHUB_API_URL + '/contributors?per_page=100');
+    return response.data;
+};
 
-    if (!data) {
+
+export default async function handler(_: NextApiRequest, res: NextApiResponse) {
+    let githubData: GithubData | undefined = myCache.get('githubData');
+    let contributors: Contributor | undefined = myCache.get('contributors');
+
+    if (!githubData || !contributors) {
         try {
-            data = await fetchGithubData();
-            myCache.set('githubData', data);
+            // Fetch GitHub repository data if not cached
+            if (!githubData) {
+                githubData = await fetchGithubData();
+                myCache.set('githubData', githubData);
+            }
+            // Fetch contributors data if not cached
+            if (!contributors) {
+                contributors = await fetchContributors();
+                myCache.set('contributors', contributors);
+            }
         } catch (error) {
-            res.status(500).json({ error: 'Error fetching data' });
+            res.status(500).json({ error: 'An error occurred while fetching data from GitHub' });
             return;
         }
     }
 
-    res.status(200).json(data);
+    const mergedData = {
+        ...githubData,
+        contributors
+    };
+
+    res.status(200).json(mergedData);
 }

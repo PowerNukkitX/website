@@ -20,7 +20,7 @@ export const siteConfig = {
     },
     {
       label: "Contribute",
-      href: "/contribute",
+      href: "/teams",
 		redirect: false
     },
 	{
