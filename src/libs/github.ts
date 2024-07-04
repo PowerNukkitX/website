@@ -12,10 +12,14 @@ export interface Contributor {
     contributions: number;
 }
 
-const fetchers = (url: string) => fetch(url).then((res) => res.json());
+const fetchers = async (url: string) => {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data.contributors || [];
+};
 
 export const useGithub = (): SWRResponse<RepositoryInfo, any> => useSWR('/api/github', fetchers);
 
 export function useContributors(): SWRResponse<Contributor[], any> {
-    return useSWR<Contributor[]>('/api/github/contributors', fetchers);
+    return useSWR<Contributor[]>('/api/github', fetchers);
 }
