@@ -37,7 +37,6 @@ const LandingHero = () => {
     }, []);
 
     const backgroundImage = useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #121212 50%, ${color})`;
-    const buttonBackground = useMotionTemplate`${color}`;
 
     return (
         <motion.section
@@ -45,9 +44,9 @@ const LandingHero = () => {
                 backgroundImage,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                minHeight: "100vh", // Utilisation de 100vh pour occuper toute la hauteur de la fenêtre
-                marginTop: "0", // Ajustement de la marge supérieure à 0 pour placer le contenu en haut
-                paddingTop: "5vh", // Ajoute un espace en haut pour ne pas coller au bord supérieur
+                minHeight: "100vh",
+                marginTop: "0",
+                paddingTop: "5vh",
             }}
             className="relative overflow-hidden px-4 py-16 text-gray-200"
             id="home"
