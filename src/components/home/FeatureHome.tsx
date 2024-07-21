@@ -1,5 +1,7 @@
 import React from 'react';
 import {AnvilIcon, CodeIcon, CommunityIcon, PerformanceIcon, PluginIcon, ServerIcon} from "@/components/icons";
+import {motion, useMotionTemplate} from 'framer-motion';
+import {useColor} from "@/components/ColorContext";
 
 const FeatureHome: React.FC = () => {
     const features = [
@@ -35,21 +37,37 @@ const FeatureHome: React.FC = () => {
         },
     ];
 
+    const { color } = useColor();
+    const backgroundImage = useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #121212 50%, ${color})`;
+
     return (
-        <section id="features">
-            <div className="mx-auto max-w-screen-xl gap-12 px-4 py-36 md:px-8">
+        <motion.section
+            style={{
+                backgroundImage,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                minHeight: "100vh",
+                marginTop: "0",
+                paddingTop: "5vh",
+                transition: 'background-image 1s ease-in-out'
+            }}
+            animate={{scaleY: -1}}
+            transition={{duration: 0}}
+            id={"features"}
+        >
+            <div className="mx-auto max-w-screen-xl gap-12 px-4 py-36 md:px-8" style={{transform: 'scaleY(-1)'}}>
                 <div className="mx-auto max-w-4xl space-y-5 text-center">
                     <h2 className="mx-auto text-4xl md:text-6xl ">
-                        <span
-                            className="bg-gradient-to-t from-success-300 to-success-500 bg-clip-text font-bold text-transparent">
-                            Looking for a powerful server solution?
-                        </span>{" "}
+                            <span
+                                className="bg-gradient-to-t from-success-300 to-success-500 bg-clip-text font-bold text-transparent">
+                                Looking for a powerful server solution?
+                            </span>{" "}
                     </h2>
                     <p className="mx-auto max-w-2xl text-xl">
                         PowerNukkitX provides{" "}
                         <span className="font-bold">
-                            robust features
-                        </span>{" "}
+                                robust features
+                            </span>{" "}
                         for your Bedrock server needs.
                     </p>
                 </div>
@@ -72,7 +90,7 @@ const FeatureHome: React.FC = () => {
                     </ul>
                 </div>
             </div>
-        </section>
+        </motion.section>
     );
 };
 

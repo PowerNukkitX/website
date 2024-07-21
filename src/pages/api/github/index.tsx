@@ -3,7 +3,7 @@ import axios from 'axios';
 import NodeCache from 'node-cache';
 
 const GITHUB_API_URL = 'https://api.github.com/repos/PowerNukkitX/PowerNukkitX';
-const myCache = new NodeCache({ stdTTL: 600, checkperiod: 120 });
+const myCache = new NodeCache({ stdTTL: 3600, checkperiod: 600 });
 
 interface GithubData {
     id: number;
