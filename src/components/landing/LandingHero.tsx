@@ -1,17 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { Stars } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
-import { Button, Chip } from "@nextui-org/react";
+import React, {useEffect, useState} from "react";
+import {Stars} from "@react-three/drei";
+import {Canvas} from "@react-three/fiber";
+import {Button, Chip} from "@nextui-org/react";
 import Link from "next/link";
-import { siteConfig } from "@/config/site";
-import { FlameIcon, GithubIcon, StarIcon } from "@/components/icons";
-import { useGithub } from "@/libs/github";
-import {
-    useMotionTemplate,
-    useMotionValue,
-    motion,
-    animate,
-} from "framer-motion";
+import {siteConfig} from "@/config/site";
+import {FlameIcon, GithubIcon, StarIcon} from "@/components/icons";
+import {useGithub} from "@/libs/github";
+import {animate, motion, useMotionTemplate, useMotionValue,} from "framer-motion";
 
 const COLORS_TOP = ["#22c55e", "#16a34a", "#15803d", "#166534"];
 
@@ -53,10 +48,11 @@ const LandingHero = () => {
         >
             <div className="absolute inset-0 z-0">
                 <Canvas>
-                    <Stars radius={50} count={2500} factor={4} fade speed={2} />
+                    <Stars radius={50} count={2500} factor={4} fade speed={2}/>
                 </Canvas>
             </div>
-            <div className="z-10 mx-auto max-w-screen-xl gap-12 px-8 md:px-8 flex flex-col justify-center items-center h-full">
+            <div
+                className="z-10 mx-auto max-w-screen-xl gap-12 px-8 md:px-8 flex flex-col justify-center items-center h-full">
                 <div className="mx-auto max-w-4xl text-center">
                     {showChip && (
                         <Chip
@@ -82,7 +78,8 @@ const LandingHero = () => {
                     <div className="flex flex-col items-center justify-center gap-3 mt-4 sm:flex-row sm:justify-center">
                         <Button
                             className={"inline-flex items-center justify-center w-full sm:w-auto h-12 px-6 group rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 py-2 group bg-success-300 hover:bg-success-400 transition-all duration-200 ease-in-out hover:ring-2 hover:ring-offset-2 hover:ring-emerald-500"}
-                            startContent={<FlameIcon className="group-hover:text-danger-400 transition-colors duration-200 ease-in-out"/>}
+                            startContent={<FlameIcon
+                                className="group-hover:text-danger-400 transition-colors duration-200 ease-in-out"/>}
                             as={Link}
                             href="/#features"
                         >
