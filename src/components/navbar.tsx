@@ -11,7 +11,7 @@ import {
 } from "@nextui-org/react";
 import {siteConfig} from "@/config/site";
 import NextLink from "next/link";
-import {DiscordIcon, DownloadIcon, GithubIcon, Logo} from "@/components/icons";
+import {DiscordIcon, GithubIcon, Logo} from "@/components/icons";
 import React from "react";
 
 export const NavbarPNX = () => {
@@ -68,13 +68,15 @@ export const NavbarPNX = () => {
 						</span>
 					</Button>
 					<Button
-						className="inline-flex items-center bg-transparent justify-center text-white whitespace-nowrap rounded-md text-sm font-medium ring-2 ring-success-300 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-success-300 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 group transition-all duration-200 ease-in-out hover:ring-2 hover:ring-offset-2 hover:ring-success-300"
-						size="sm"
-						startContent={<DownloadIcon className="group-hover:text-success-300 transition-colors duration-200 ease-in-out" />}
 						as={Link}
-						href="https://github.com/PowerNukkitX/PowerNukkitX/releases"
+						href={siteConfig.links.github}
+						isIconOnly
+						className="inline-flex bg-transparent items-center justify-center text-white whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 group transition-all duration-200 ease-in-out hover:ring-2 hover:ring-offset-2 hover:ring-content2"
 					>
-						Download
+						<span
+							className="flex items-center group-hover:text-neutral-500 transition-colors duration-200 ease-in-out">
+							<GithubIcon />
+						</span>
 					</Button>
 				</NavbarItem>
 			</NavbarContent>

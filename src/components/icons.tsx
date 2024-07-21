@@ -3,6 +3,7 @@ import {IconSvgProps} from "@/types";
 import Image from "next/image";
 import {
 	LucideAnvil,
+	LucideBook,
 	LucideCodeXml,
 	LucideDownload,
 	LucideFlame,
@@ -80,4 +81,8 @@ export const CommunityIcon = ({className}: IconProps) => (
 
 export const UserIcon = ({className}: IconProps) => (
 	<LucideUser className={className}/>
+);
+
+export const DocsIcon = ({className}: IconProps) => (
+	<LucideBook className={className}/>
 );

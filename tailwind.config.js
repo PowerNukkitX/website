@@ -10,6 +10,8 @@ module.exports = {
     extend: {
       backgroundImage: {
         'error-bg': "url('/Nether_Portal_background.webp')",
+        'manuel-bg': "url('/manuel-bg.jpg')",
+        'cli-bg': "url('/cli-bg.png')",
       },
     },
   },
