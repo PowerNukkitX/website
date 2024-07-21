@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Stars} from "@react-three/drei";
 import {Canvas} from "@react-three/fiber";
-import {Button, Chip} from "@nextui-org/react";
+import {Button, Chip, Snippet} from "@nextui-org/react";
 import Link from "next/link";
 import {siteConfig} from "@/config/site";
 import {FlameIcon, GithubIcon, StarIcon} from "@/components/icons";
@@ -75,11 +75,21 @@ const LandingHero = () => {
                         Unleash the potential of your Minecraft server with PowerNukkitX, where performance meets
                         flexibility, crafting an unparalleled gaming experience for you and your players.
                     </p>
+                    <Snippet
+                        className="mt-4 text-white ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-content1 transition-all duration-200 ease-in-out hover:ring-2 hover:ring-offset-2 hover:ring-content2"
+                        size="md"
+                        symbol={"#"}
+                        copyButtonProps={{
+                            disableRipple: true,
+                        }}
+                    >
+                        npx i pnx-cli
+                    </Snippet>
                     <div className="flex flex-col items-center justify-center gap-3 mt-4 sm:flex-row sm:justify-center">
                         <Button
-                            className={"inline-flex items-center justify-center w-full sm:w-auto h-12 px-6 group rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 py-2 group bg-success-300 hover:bg-success-400 transition-all duration-200 ease-in-out hover:ring-2 hover:ring-offset-2 hover:ring-emerald-500"}
+                            className={"inline-flex items-center justify-center w-full sm:w-auto h-12 px-6 group rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 py-2 group bg-success-300 hover:bg-success-300 hover:opacity-30 transition-all duration-200 ease-in-out hover:ring-2 hover:ring-offset-2 hover:ring-emerald-500"}
                             startContent={<FlameIcon
-                                className="group-hover:text-danger-400 transition-colors duration-200 ease-in-out"/>}
+                                className="group-hover:text-orange-400 transition-colors duration-200 ease-in-out"/>}
                             as={Link}
                             href="/#features"
                         >
