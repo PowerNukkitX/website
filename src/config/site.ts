@@ -6,7 +6,7 @@ export const siteConfig = {
 	navItems: [
     {
       label: "Docs",
-      href: "https://docs.powernukkitx.com/",
+      href: "https://docs-pnx.pages.dev/",
 		redirect: true
     },
 	{
@@ -45,7 +45,7 @@ export const siteConfig = {
 	],
 	links: {
 		github: "https://github.com/PowerNukkitX",
-		docs: "/",
+		docs: "https://docs-pnx.pages.dev/",
 		discord: "https://discord.gg/8bTGJ5FzY4",
     	sponsor: "/"
 	},

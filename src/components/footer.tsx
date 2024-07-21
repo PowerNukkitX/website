@@ -1,11 +1,12 @@
 import React from "react";
 import {DiscordIcon, GithubIcon} from "@/components/icons";
+import {siteConfig} from "@/config/site";
 
 export const Footer = () => {
     const navigation = {
         main: [
             { name: 'Home', href: '#' },
-            { name: 'Documentation', href: 'https://docs.powernukkitx.com/' },
+            { name: 'Documentation', href: siteConfig.links.docs },
             { name: 'Plugins', href: '#' },
             { name: 'Team', href: 'teams' },
             { name: 'Partners', href: '#' },
@@ -13,12 +14,12 @@ export const Footer = () => {
         social: [
             {
                 name: 'Discord',
-                href: '#',
+                href: siteConfig.links.discord,
                 icon: DiscordIcon,
             },
             {
                 name: 'GitHub',
-                href: '#',
+                href: siteConfig.links.github,
                 icon: GithubIcon,
             },
         ],
